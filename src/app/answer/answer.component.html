@@ -1,0 +1,24 @@
+
+<form #form="ngForm">
+    <input type="radio" name="questionRadio" value="option1" ngModel><label>radio1</label>
+    <input type="radio" name="questionRadio" value="option2" ngModel><label>radio2</label>
+    <input type="radio" name="questionRadio" value="option3" ngModel><label>radio3</label>
+    <input type="radio" name="questionRadio" value="option4" ngModel><label>radio4</label>
+    
+    <br><br>
+    
+    <input type="checkbox" name="questionCheckbox" value="checkbox1" ngModel><label>checkbox1</label>
+    <input type="checkbox" name="questionCheckbox" value="checkbox2" ngModel><label>checkbox2</label>
+    <input type="checkbox" name="questionCheckbox" value="checkbox3" ngModel><label>checkbox3</label>
+    <input type="checkbox" name="questionCheckbox" value="checkbox4" ngModel><label>checkbox4</label>
+    
+    <br><br>
+    
+    <input type="text" name="questionText" placeholder="text1" [(ngModel)] = "answer.text">
+    
+    <br><br>
+    
+    <button value='button1' ngModel>Button</button>    
+</form>
+
+{{ answer.text | json }}
