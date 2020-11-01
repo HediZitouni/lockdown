@@ -7,12 +7,16 @@ import { QuestionComponent } from './question/question.component';
 
 import { FormsModule } from '@angular/forms';
 import { AnswerComponent } from './answer/answer.component';
+import { MancheComponent } from './manche/manche.component';
+import { AnswerFormComponent } from './answer-form/answer-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
-    AnswerComponent
+    AnswerComponent,
+    MancheComponent,
+    AnswerFormComponent
   ],
   imports: [
     BrowserModule,
