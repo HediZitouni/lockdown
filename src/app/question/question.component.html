@@ -1,1 +1,15 @@
-<p>question works!</p>
+<div>
+    <div>{{question.content}}</div>
+
+    <div *ngIf = "question.type === 'sound'">
+        <audio controls>
+            <source src="{{assetFolder}}{{question.source}}" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div *ngIf = "question.type === 'image'">
+        <div>
+            <img src="{{assetFolder}}{{question.source}}">
+        </div>
+    </div>
+</div>
