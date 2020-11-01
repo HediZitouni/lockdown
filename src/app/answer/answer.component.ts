@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { answersModel } from '../datamodel/answersModel';
+import { answerModel } from '../datamodel/answerModel';
 
 @Component({
   selector: 'app-answer',
@@ -7,23 +7,13 @@ import { answersModel } from '../datamodel/answersModel';
   styleUrls: ['./answer.component.scss']
 })
 export class AnswerComponent implements OnInit {
-
-  originalAnswer: answersModel = {
-    checkbox: '',
-    radio: '',
-    text: 'myText '
+  answer: answerModel = { // has to come from manche
+    content: 'my answer'
   }
-
-  answer: answersModel = {...this.originalAnswer};
-  submittedAnswer: answersModel;
+;
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onSubmit(): void {
-    this.submittedAnswer = {...this.answer};
-    console.log(this.submittedAnswer)
   }
 
 }

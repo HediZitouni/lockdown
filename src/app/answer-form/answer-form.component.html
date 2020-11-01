@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div *ngIf = "answerForm.type === 'text'">
+        <input type="text" name="answerForm.type" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
+        <br><br>
+    </div>
+
+    <div *ngIf = "answerForm.type === 'radio'">
+        <div *ngFor = "let option of answerForm.options">
+            <input type="radio" name="answerForm.type" value="{{option}}" [(ngModel)] = "answerForm.answer"><label>{{option}}</label>
+        </div>
+        <br><br>
+    </div>
+
+    <div *ngIf = "answerForm.type === 'checkbox'">
+        <div *ngFor = "let option of answerForm.options">
+            <input type="checkbox" name="answerForm.type" value="{{option}}" [(ngModel)] = "answerForm.answer"><label>{{option}}</label>
+        </div>
+        <br><br>
+    </div>
+    <div *ngIf = "answerForm.type === 'button'">
+        <button>{{answerForm.content}}</button>
+    </div>
+</form>
+
+{{ answerForm | json }}
