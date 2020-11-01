@@ -1,5 +1,5 @@
 
-<form #form="ngForm">
+<form #form="ngForm" (ngSubmit)="onSubmit()">
     <input type="radio" name="questionRadio" value="option1" ngModel><label>radio1</label>
     <input type="radio" name="questionRadio" value="option2" ngModel><label>radio2</label>
     <input type="radio" name="questionRadio" value="option3" ngModel><label>radio3</label>
@@ -18,7 +18,7 @@
     
     <br><br>
     
-    <button value='button1' ngModel>Button</button>    
+    <button value='button1'>Button</button>    
 </form>
 
-{{ answer.text | json }}
+{{ answer | json }}

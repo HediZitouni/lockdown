@@ -8,15 +8,22 @@ import { answersModel } from '../datamodel/answersModel';
 })
 export class AnswerComponent implements OnInit {
 
-  answer: answersModel = {
-    button: '',
+  originalAnswer: answersModel = {
     checkbox: '',
     radio: '',
-    text: 'myText'
+    text: 'myText '
   }
+
+  answer: answersModel = {...this.originalAnswer};
+  submittedAnswer: answersModel;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    this.submittedAnswer = {...this.answer};
+    console.log(this.submittedAnswer)
   }
 
 }
