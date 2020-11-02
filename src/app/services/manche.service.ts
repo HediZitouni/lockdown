@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MancheService {
-  private backUrl = 'http://localhost:3000';
+  //private backUrl = 'http://localhost:3000';
   private mockManches = [{
     question: {id: 1, type: 'text', content: 'My text question ?'},
     answerForm: {id: 1, type: 'checkbox', content: 'questionCheckbox', options: ['checkbox10', 'checkbox20', 'checkbox30'] },
