@@ -1,3 +1,4 @@
 export interface answerModel {
-    content: string
+    content: string,
+    idQuestion: number
 }

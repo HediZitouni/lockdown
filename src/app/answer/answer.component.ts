@@ -8,6 +8,7 @@ import { answerModel } from '../datamodel/answerModel';
 })
 export class AnswerComponent implements OnInit {
   answer: answerModel = { // has to come from manche
+    idQuestion: 1,
     content: 'my answer'
   }
 ;

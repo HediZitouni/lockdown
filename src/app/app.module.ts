@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AnswerComponent } from './answer/answer.component';
 import { MancheComponent } from './manche/manche.component';
 import { AnswerFormComponent } from './answer-form/answer-form.component';
+import { PartieComponent } from './partie/partie.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AnswerFormComponent } from './answer-form/answer-form.component';
     QuestionComponent,
     AnswerComponent,
     MancheComponent,
-    AnswerFormComponent
+    AnswerFormComponent,
+    PartieComponent
   ],
   imports: [
     BrowserModule,

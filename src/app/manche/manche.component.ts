@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { questionModel } from '../datamodel/questionModel';
-import { answerModel } from '../datamodel/answerModel';
+import { mancheModel } from '../datamodel/mancheModel';
 
 @Component({
   selector: 'app-manche',
@@ -9,8 +8,7 @@ import { answerModel } from '../datamodel/answerModel';
   styleUrls: ['./manche.component.scss']
 })
 export class MancheComponent implements OnInit {
-  questionModel: questionModel = {id: 1, type: 'text', content: 'My text question ?'};
-  answerModel: answerModel = { content: 'My answer of the question !' };
+  @Input() manche: mancheModel;
   constructor() { }
 
   ngOnInit(): void {

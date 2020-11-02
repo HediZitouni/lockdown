@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { answerFormModel } from '../datamodel/answerFormModel';
 
 @Component({
@@ -9,13 +9,13 @@ import { answerFormModel } from '../datamodel/answerFormModel';
 export class AnswerFormComponent implements OnInit {
 
   originalAnswer: answerFormModel[] = [ // has to come from manche component, one by one
-    { type: 'text', content: 'Enter an answer'},
-    { type: 'radio', content: 'questionRadio', options: ['radio1', 'radio2', 'radio3'] },
-    { type: 'checkbox', content: 'questionCheckbox', options: ['checkbox1', 'checkbox2', 'checkbox3'] },
-    { type: 'button', content: 'Click me'}
+    { id:1, type: 'text', content: 'Enter an answer'},
+    { id:2, type: 'radio', content: 'questionRadio', options: ['radio1', 'radio2', 'radio3'] },
+    { id:3, type: 'checkbox', content: 'questionCheckbox', options: ['checkbox1', 'checkbox2', 'checkbox3'] },
+    { id:4, type: 'button', content: 'Click me'}
   ];
 
-  answerForm: answerFormModel = JSON.parse(JSON.stringify(this.originalAnswer[0]));
+  @Input() answerForm: answerFormModel;
   submittedAnswerForm: answerFormModel;
   constructor() { }
 
@@ -24,5 +24,20 @@ export class AnswerFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submittedAnswerForm = {...this.answerForm};
+    alert(this.submittedAnswerForm.answer);
+  }
+
+
+  /**
+   * @description Manage checkbox value
+   */
+  onChange({target:{checked, value}}): void {
+    this.answerForm.answer = this.answerForm.answer || []; // initialize answer = []
+    if (checked) {
+      this.answerForm.answer.push(value);
+    } else {
+      const index = this.answerForm.answer.findIndex(option => option === value);
+      this.answerForm.answer.splice(index, 1);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { questionModel } from '../datamodel/questionModel'
 
 @Component({
@@ -14,11 +14,10 @@ export class QuestionComponent implements OnInit {
     {id: 3, type: 'sound', content: 'Guess the music', source: 'sounds/sound.mp3'},
     {id: 4, type: 'image', content: 'Guess the image', source: 'images/image.jpg'}
   ];
-  question: questionModel;
+  @Input() question: questionModel;
   constructor() { }
 
   ngOnInit(): void {
-    this.question = this.questions[0];
   }
 
 }
