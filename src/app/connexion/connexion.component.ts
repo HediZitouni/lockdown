@@ -17,14 +17,24 @@ export class ConnexionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.connected) {
-      this.router.navigate(['/room']);
-    }
+    this.isConnected();
   }
 
   onSubmit(): void {
-    const validationMessage = this.userService.setUser(this.newUser);
-    alert(validationMessage);
+    try {
+      this.userService.setUser(this.newUser);
+      sessionStorage.setItem('pseudo', this.newUser.pseudo);
+      this.router.navigate(['/room']);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  isConnected() {
+    const currentUser = this.userService.getCurrentUser();
+    if (!!currentUser.pseudo) {
+      this.router.navigate(['/room']);
+    }
   }
 
 }

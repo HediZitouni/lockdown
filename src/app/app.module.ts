@@ -31,6 +31,7 @@ import { RoomComponent } from './room/room.component';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: ConnexionComponent},
+      {path: 'partie', component: PartieComponent},
       {path: 'room', component: RoomComponent}
     ])
   ],
