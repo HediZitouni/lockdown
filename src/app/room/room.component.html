@@ -1,1 +1,5 @@
-<p>room works!</p>
+<div *ngFor="let user of users">
+    <span [className]="user.pseudo === currentUser.pseudo ? 'currentUser' : ''">{{user.pseudo}}</span>
+</div>
+
+<button [routerLink]="['/partie']">Start game</button>
