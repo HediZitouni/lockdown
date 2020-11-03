@@ -12,6 +12,7 @@ import { MancheComponent } from './manche/manche.component';
 import { AnswerFormComponent } from './answer-form/answer-form.component';
 import { PartieComponent } from './partie/partie.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MancheComponent,
     AnswerFormComponent,
     PartieComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: 'connexion', component: ConnexionComponent}
+      {path: '', component: ConnexionComponent},
+      {path: 'room', component: RoomComponent}
     ])
   ],
   providers: [],
