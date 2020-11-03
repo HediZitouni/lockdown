@@ -11,7 +11,7 @@ import { MancheService } from '../services/manche.service';
 })
 export class PartieComponent implements OnInit {
 
-  partie: partieModel = { // to get from a service
+  partie: partieModel = {
     manches: []
   }
 
@@ -24,12 +24,11 @@ export class PartieComponent implements OnInit {
   }
 
   getManches(): void {
-    this.partie.manches = this.mancheService.getManches();
-    // this.mancheService.getManches().toPromise().then((res: mancheModel[]) => {
-    //   this.partie.manches = res;
-    // }, error => {
-    //   console.log(error);
-    // });
+    this.mancheService.getManches().toPromise().then((res: mancheModel[]) => {
+      this.partie.manches = res;
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
