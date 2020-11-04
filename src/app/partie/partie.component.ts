@@ -21,11 +21,12 @@ export class PartieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getManches();
+    console.log(this.partie);
   }
 
   getManches(): void {
     this.mancheService.getManches().toPromise().then((res: mancheModel[]) => {
-      this.partie.manches = res;
+      this.partie.manches = this.mancheService.fromBackToManche(res);
     }, error => {
       console.log(error);
     });
