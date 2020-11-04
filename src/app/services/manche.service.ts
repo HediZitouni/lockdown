@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MancheService {
-  private backUrl = 'http://localhost:3000';
+  private backUrl = 'https://lockdown-server.herokuapp.com/';
   constructor(
     private http: HttpClient
   ) { }
 
   getManches() {
-    return this.http.get(`${this.backUrl}/manches`);
+    return this.http.get(`${this.backUrl}/questions`);
   }
 }
