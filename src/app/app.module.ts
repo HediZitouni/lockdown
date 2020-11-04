@@ -13,6 +13,7 @@ import { AnswerFormComponent } from './answer-form/answer-form.component';
 import { PartieComponent } from './partie/partie.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { RoomComponent } from './room/room.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RoomComponent } from './room/room.component';
     AnswerFormComponent,
     PartieComponent,
     ConnexionComponent,
-    RoomComponent
+    RoomComponent,
+    SuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { RoomComponent } from './room/room.component';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: ConnexionComponent},
+      {path: 'suggestion', component: SuggestionComponent},
       {path: 'partie', component: PartieComponent},
       {path: 'room', component: RoomComponent}
     ])

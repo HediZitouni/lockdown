@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div>my question</div>
+
+    <div>
+        <input type="radio" name="questionType" value="text" [(ngModel)] = "questionType"><label>Text</label>
+        <input type="radio" name="questionType" value="image" [(ngModel)] = "questionType"><label>image</label>
+        <input type="radio" name="questionType" value="sound" [(ngModel)] = "questionType"><label>sound</label>
+        <input type="radio" name="questionType" value="position" [(ngModel)] = "questionType"><label>position</label>
+    </div>
+
+    <div *ngIf="questionType !== 'position'">
+            <div>My answers</div>
+            <div *ngFor="let answer of answers">
+                <span>{{answer}}</span>
+                <button (click)="onClickRemove(answer)" name="{{answer}}">-</button>
+            </div>
+            <input type="text" name="answer" placeholder="Enter an answer" [(ngModel)] = "currentAnswer">
+            <button (click)="onClick()">+</button>
+
+            <div>
+                <button (submit)="onSubmit()">Submit</button>
+            </div>
+    </div>
+</form>
+
