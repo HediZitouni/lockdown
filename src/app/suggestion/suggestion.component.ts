@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { questionModel } from '../datamodel/questionModel';
 
 @Component({
   selector: 'app-suggestion',
@@ -6,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./suggestion.component.scss']
 })
 export class SuggestionComponent implements OnInit {
-  questionType: string;
+  question: questionModel;
   answers: string[] = [];
   currentAnswer: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.question = {
+      id: 0,
+      content: '',
+      type:''
+    }
   }
 
   onClick() {
@@ -25,7 +31,7 @@ export class SuggestionComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.questionType,this.answers);
+    console.log(this.question.type,this.answers);
   }
 
 }
