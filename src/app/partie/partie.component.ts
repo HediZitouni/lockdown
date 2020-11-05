@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { partieModel } from '../datamodel/partieModel';
+import { mancheModel } from '../datamodel/mancheModel';
+import { MancheService } from '../services/manche.service';
 
 @Component({
   selector: 'app-partie',
@@ -9,24 +11,25 @@ import { partieModel } from '../datamodel/partieModel';
 })
 export class PartieComponent implements OnInit {
 
-  partie: partieModel = { // to get from a service
-    manches: [
-      {
-        question: {id: 1, type: 'text', content: 'My text question ?'},
-        answerForm: {id: 1, type: 'checkbox', content: 'questionCheckbox', options: ['checkbox10', 'checkbox20', 'checkbox30'] },
-        answer: {idQuestion: 1, content: 'my answer'}
-      },
-      {
-        question: {id: 2, type: 'image', content: 'Guess the image', source: 'images/image.jpg'},
-        answerForm: {id: 2, type: 'text', content: 'Enter an answer'},
-        answer: {idQuestion: 2, content: 'My second answer'}
-      },
-    ]
+  partie: partieModel = {
+    manches: []
   }
 
-  constructor() { }
+  constructor(
+    private mancheService: MancheService
+  ) { }
 
   ngOnInit(): void {
+    this.getManches();
+    console.log(this.partie);
+  }
+
+  getManches(): void {
+    this.mancheService.getManches().toPromise().then((res: mancheModel[]) => {
+      this.partie.manches = this.mancheService.fromBackToManche(res);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
