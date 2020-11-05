@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { questionModel } from '../datamodel/questionModel';
+import { SuggestionService } from '../services/suggestion.service';
 
 @Component({
   selector: 'app-suggestion',
@@ -10,7 +11,9 @@ export class SuggestionComponent implements OnInit {
   question: questionModel;
   answers: string[] = [];
   currentAnswer: string;
-  constructor() { }
+  constructor(
+    private suggestionService: SuggestionService
+  ) { }
 
   ngOnInit(): void {
     this.question = {
@@ -31,7 +34,10 @@ export class SuggestionComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.question.type,this.answers);
+    this.suggestionService.setSuggestion({
+      question: this.question,
+      answer: this.answers
+    });
   }
 
 }

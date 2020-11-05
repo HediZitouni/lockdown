@@ -19,7 +19,7 @@
                 <button (click)="onClickRemove(answer)" name="{{answer}}">-</button>
             </div>
             <input type="text" name="answer" placeholder="Enter an answer" [(ngModel)] = "currentAnswer">
-            <button (click)="onClick()">+</button>
+            <button type="button" (click)="onClick()">+</button>
 
             <div>
                 <button (submit)="onSubmit()">Submit</button>
