@@ -1,0 +1,35 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div>my question</div>
+
+    <input type="text" name="question" placeholder="Enter a question" [(ngModel)] = "question.content" required>
+
+    <div>
+        <input type="radio" name="questionType" value="text" [(ngModel)] = "question.type" (change)="onChangeQuestionType()" required><label>Text</label>
+        <input type="radio" name="questionType" value="textWithImage" [(ngModel)] = "question.type" (change)="onChangeQuestionType()" required><label>image</label>
+    </div>
+
+    <div>My answers (If an answer has multiple way to be validated, separate them by a coma (,))</div>
+
+    <div *ngIf= "question.type === 'textWithImage'">
+        <input type="text" name="url" placeholder="Enter the image url" [(ngModel)] = "question.source">
+    </div>
+
+    <div>
+        <input type="radio" name="answerType" value="plaintext" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required><label>Text</label>
+        <input type="radio" name="answerType" value="checkbox" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required><label>checkbox</label>
+        <input type="radio" name="answerType" value="radio" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required><label>radio</label>
+    </div>
+
+    <div *ngFor="let option of answer.options">
+        <span>{{option}}</span>
+        <button type='button' (click)="onClickRemove(option)">-</button>
+        <button type='button' (click)="onClickValidate(option)">valide</button>
+    </div>
+    <input type="text" name="option" placeholder="Enter an option" [(ngModel)] = "currentAnswer">
+    <button type="button" (click)="onClick()">+</button>
+
+    <div>
+        <button (submit)="onSubmit()">Submit</button>
+    </div>
+</form>
+ {{answer | json}}

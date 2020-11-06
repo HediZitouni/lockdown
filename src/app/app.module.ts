@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { AnswerFormComponent } from './answer-form/answer-form.component';
 import { PartieComponent } from './partie/partie.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { RoomComponent } from './room/room.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { RoomComponent } from './room/room.component';
     AnswerFormComponent,
     PartieComponent,
     ConnexionComponent,
-    RoomComponent
+    RoomComponent,
+    SuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { RoomComponent } from './room/room.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: ConnexionComponent},
+      {path: 'suggestion', component: SuggestionComponent},
       {path: 'partie', component: PartieComponent},
       {path: 'room', component: RoomComponent}
     ])
