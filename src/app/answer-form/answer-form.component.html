@@ -1,6 +1,6 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div *ngIf = "answerForm.type === 'text'">
-        <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
+        <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.answer">
         <br><br>
     </div>
 
@@ -16,9 +16,6 @@
             <input type="checkbox" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" (change)="onChange($event)"><label>{{option}}</label>
         </div>
         <br><br>
-    </div>
-    <div *ngIf = "answerForm.type === 'button'">
-        <button>{{answerForm.content}}</button>
     </div>
 
     <button>click</button>

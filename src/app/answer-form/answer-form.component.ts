@@ -9,10 +9,10 @@ import { answerFormModel } from '../datamodel/answerFormModel';
 export class AnswerFormComponent implements OnInit {
 
   originalAnswer: answerFormModel[] = [ // has to come from manche component, one by one
-    { id:1, type: 'text', content: 'Enter an answer'},
-    { id:2, type: 'radio', content: 'questionRadio', options: ['radio1', 'radio2', 'radio3'] },
-    { id:3, type: 'checkbox', content: 'questionCheckbox', options: ['checkbox1', 'checkbox2', 'checkbox3'] },
-    { id:4, type: 'button', content: 'Click me'}
+    { id:1, type: 'text'},
+    { id:2, type: 'radio', options: ['radio1', 'radio2', 'radio3'] },
+    { id:3, type: 'checkbox', options: ['checkbox1', 'checkbox2', 'checkbox3'] },
+    { id:4, type: 'button'}
   ];
 
   @Input() answerForm: answerFormModel;
