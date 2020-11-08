@@ -1,0 +1,7 @@
+<div *ngFor="let suggestion of suggestions">
+    <app-question [question]='suggestion.question'></app-question>
+    <app-answer-form [answerForm]='suggestion.answerForm'></app-answer-form>
+    <app-answer [answer]='suggestion.answer'></app-answer>
+    <button type='button' (click)="onValidate(suggestion.question.id, true)">Validate</button>
+    <button type='button' (click)="onValidate(suggestion.question.id, false)">Reject</button>
+</div>

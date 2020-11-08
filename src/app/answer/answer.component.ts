@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { answerModel } from '../datamodel/answerModel';
 
 @Component({
@@ -7,11 +7,7 @@ import { answerModel } from '../datamodel/answerModel';
   styleUrls: ['./answer.component.scss']
 })
 export class AnswerComponent implements OnInit {
-  answer: answerModel = { // has to come from manche
-    idQuestion: 1,
-    content: 'my answer'
-  }
-;
+  @Input() answer: answerModel;
   constructor() { }
 
   ngOnInit(): void {
