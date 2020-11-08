@@ -31,5 +31,4 @@ export class PartieComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
