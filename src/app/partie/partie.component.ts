@@ -25,16 +25,7 @@ export class PartieComponent implements OnInit {
   }
 
   getManches(): void {
-    this.mancheService
-      .getManches()
-      .toPromise()
-      .then(
-        (res: mancheModel[]) => {
-          this.partie.manches = this.mancheService.fromBackToManche(res);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    const res = [this.mancheService.getManches()];
+    this.partie.manches = this.mancheService.fromBackToManche(res);
   }
 }
