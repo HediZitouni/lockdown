@@ -30,6 +30,7 @@ export class SocketService {
     this.onQuestion();
     this.onAnswers();
     this.onResults();
+    this.onRoom();
   }
 
   private getSocket() {
