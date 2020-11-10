@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { mancheModel } from '../datamodel/mancheModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MancheService {
-  private backUrl = 'https://lockdown-server.herokuapp.com/';
   manche: mancheModel;
   constructor(
-    private http: HttpClient
   ) { }
 
   getManches() {
-    //return this.http.get(`${this.backUrl}questions`);
     return this.manche;
   }
   
@@ -21,29 +17,20 @@ export class MancheService {
     this.manche = newManche;
   }
 
-  fromBackToManche(mancheUnformated) {
-    const manches: mancheModel[] = [];
-    mancheUnformated.forEach((manche: any) => {
+  fromBackToManche(roundData) {
       const question = {
-        id: manche._id,
-        type: manche.question.type,
-        content: manche.question.content,
-        source: manche.question.source
-      };
-      const answer = {
-        idQuestion: manche._id,
-        content: manche.answer.answers
+        id: roundData.round._id,
+        type: roundData.round.question.type,
+        content: roundData.round.question.content,
+        source: roundData.round.question.source
       };
       const answerForm = {
-        type: manche.answer.type,
-        options: manche.answer.options
+        type: roundData.round.answer.type,
+        options: roundData.round.answer.options
       };
-      manches.push({
+      return {
         question: question,
-        answerForm: answerForm,
-        answer: answer
-      })
-    });
-    return manches;
+        answerForm: answerForm
+      };
   }
 }

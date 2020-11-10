@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { userModel } from '../datamodel/userModel';
 import { SocketService } from '../services/socket.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room',
@@ -15,7 +14,6 @@ export class RoomComponent implements OnInit {
   room: string;
   constructor(
     private userService: UserService,
-    private router: Router,
     private socketService: SocketService
   ) { }
 
@@ -39,7 +37,6 @@ export class RoomComponent implements OnInit {
 
   onSubmit() {
     this.socketService.callSocket('emitReady');
-    this.router.navigate(['/partie']);
   }
 
   onClick(emit): void {

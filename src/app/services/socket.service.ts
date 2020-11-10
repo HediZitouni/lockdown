@@ -4,6 +4,7 @@ import { back } from '../utils/urls';
 
 import { UserService } from '../services/user.service';
 import { MancheService } from './manche.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class SocketService {
   socket: any;
   constructor(
     private userService: UserService,
-    private mancheService: MancheService
+    private mancheService: MancheService,
+    private router: Router
   ) { }
 
   //Handler of socketService
@@ -27,7 +29,7 @@ export class SocketService {
     this.socket = io(`${back}`);
     this.onError();
     this.onListUsers();
-    this.onQuestion();
+    this.onRound();
     this.onAnswers();
     this.onResults();
     this.onRoom();
@@ -49,9 +51,10 @@ export class SocketService {
     });
   }
 
-  private onQuestion() {
-    this.socket.on('question', (manche) => {
-      this.mancheService.setManche(manche);
+  private onRound() {
+    this.socket.on('round', (roundData) => {
+      this.mancheService.setManche(this.mancheService.fromBackToManche(roundData));
+      this.router.navigate(['/partie']);
     });
   }
 

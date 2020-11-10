@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { partieModel } from '../datamodel/partieModel';
-import { mancheModel } from '../datamodel/mancheModel';
 import { MancheService } from '../services/manche.service';
-
-import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-partie',
@@ -25,7 +22,6 @@ export class PartieComponent implements OnInit {
   }
 
   getManches(): void {
-    const res = [this.mancheService.getManches()];
-    this.partie.manches = this.mancheService.fromBackToManche(res);
+    this.partie.manches = [this.mancheService.getManches()];
   }
 }

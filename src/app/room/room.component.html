@@ -2,11 +2,9 @@
     <span [className]="user.pseudo === currentUser.pseudo ? 'currentUser' : ''">{{user.pseudo}}</span>
 </div>
 
-<div *ngIf="room">
-    <form #form="ngForm" (ngSubmit)="onSubmit()">
-        <button>Ready</button>
-    </form>
-</div>
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <button>Ready</button>
+</form>
 
 <div *ngIf="!room">
     <button type='button' (click)="onClick('emitCreateGame')">Create a game</button>
