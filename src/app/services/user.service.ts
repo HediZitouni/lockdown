@@ -33,7 +33,7 @@ export class UserService {
 
   setUsers(listUsers) {
     this.users = listUsers.map((user) => {
-      return {pseudo: user};
+      return {pseudo: user.pseudo};
     });
     sessionStorage.setItem('users', JSON.stringify(this.users));
   }
