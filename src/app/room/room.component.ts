@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RoomComponent implements OnInit {
   users: userModel[];
   currentUser: userModel;
+  room: string;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -21,6 +22,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.getCurrentUser();
+    this.getRoom();
   }
 
   getUsers() {
@@ -31,8 +33,16 @@ export class RoomComponent implements OnInit {
     this.currentUser = this.userService.getCurrentUser();
   }
 
+  getRoom() {
+    this.room = this.userService.getRoom();
+  }
+
   onSubmit() {
     this.socketService.callSocket('emitReady');
     this.router.navigate(['/partie']);
+  }
+
+  onClick(emit): void {
+    this.socketService.callSocket(emit);
   }
 }

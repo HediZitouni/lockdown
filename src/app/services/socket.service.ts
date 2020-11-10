@@ -66,6 +66,12 @@ export class SocketService {
     });
   }
 
+  private onRoom() {
+    this.socket.on('room', (room) => {
+      this.userService.setRoom(room);
+    });
+  }
+
   private emitCreateGame(answer) {
     this.socket.emit('createGame', {pseudo: this.userService.getCurrentUser().pseudo});
   }

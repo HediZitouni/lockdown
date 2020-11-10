@@ -37,4 +37,12 @@ export class UserService {
     });
     sessionStorage.setItem('users', JSON.stringify(this.users));
   }
+
+  getRoom(): string {
+    return sessionStorage.getItem('room'); // Only on the host session
+  }
+
+  setRoom(room): void {
+    sessionStorage.setItem('room', room);
+  }
 }
