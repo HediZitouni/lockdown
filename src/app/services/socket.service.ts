@@ -66,12 +66,16 @@ export class SocketService {
     });
   }
 
+  private emitCreateGame(answer) {
+    this.socket.emit('createGame', {pseudo: this.userService.getCurrentUser().pseudo});
+  }
+
   private emitNewUser(newUser) {
-    this.socket.emit('newUser', this.userService.getCurrentUser().pseudo);
+    this.socket.emit('newUser', {pseudo:this.userService.getCurrentUser().pseudo});
   }
 
   private emitReady() {
-    this.socket.emit('ready', this.userService.getCurrentUser().pseudo);
+    this.socket.emit('ready', {pseudo: this.userService.getCurrentUser().pseudo});
   }
 
   private emitAnswered(answer) {

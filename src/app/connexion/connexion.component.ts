@@ -26,7 +26,8 @@ export class ConnexionComponent implements OnInit {
     try {
       this.userService.setUser(this.newUser);
       sessionStorage.setItem('pseudo', this.newUser.pseudo);
-      this.socketService.callSocket('emitNewUser');
+      this.socketService.callSocket('emitCreateGame');
+      //this.socketService.callSocket('emitNewUser');
       this.router.navigate(['/room']);
     } catch (error) {
       alert(error.message);
