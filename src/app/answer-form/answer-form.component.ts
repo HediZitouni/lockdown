@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { answerFormModel } from '../datamodel/answerFormModel';
+import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-answer-form',
@@ -10,13 +11,16 @@ export class AnswerFormComponent implements OnInit {
 
   @Input() answerForm: answerFormModel;
   submittedAnswerForm: answerFormModel;
-  constructor() { }
+  constructor(
+    private socketService: SocketService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     this.submittedAnswerForm = {...this.answerForm};
+    this.socketService.callSocket('emitAnswered', this.submittedAnswerForm);
     alert(this.submittedAnswerForm.content);
   }
 

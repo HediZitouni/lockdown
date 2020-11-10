@@ -30,4 +30,11 @@ export class UserService {
   getCurrentUser(): userModel {
     return {pseudo: sessionStorage.getItem('pseudo')};
   }
+
+  setUsers(listUsers) {
+    this.users = listUsers.map((user) => {
+      return {pseudo: user};
+    });
+    sessionStorage.setItem('users', JSON.stringify(this.users));
+  }
 }

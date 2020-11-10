@@ -1,12 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { partieModel } from '../datamodel/partieModel';
 import { mancheModel } from '../datamodel/mancheModel';
 import { MancheService } from '../services/manche.service';
 
-import { io } from 'socket.io-client';
-import { back } from '../utils/urls';
-import { UserService } from '../services/user.service';
+import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-partie',
@@ -17,21 +15,13 @@ export class PartieComponent implements OnInit {
   partie: partieModel = {
     manches: [],
   };
-  private socket: any;
 
   constructor(
-    private mancheService: MancheService,
-    private userService: UserService
+    private mancheService: MancheService
   ) {}
 
   ngOnInit(): void {
     this.getManches();
-    this.socket = io(`${back}`);
-  }
-  ngAfterViewInit(): void {
-    this.socket.on('question', (data) => {
-      console.log(data);
-    });
   }
 
   getManches(): void {
@@ -46,10 +36,5 @@ export class PartieComponent implements OnInit {
           console.log(error);
         }
       );
-  }
-
-  onClick() {
-    this.socket.emit('next', this.userService.getCurrentUser().pseudo);
-    alert(this.userService.getCurrentUser().pseudo);
   }
 }

@@ -7,12 +7,18 @@ import { mancheModel } from '../datamodel/mancheModel';
 })
 export class MancheService {
   private backUrl = 'https://lockdown-server.herokuapp.com/';
+  manche: mancheModel;
   constructor(
     private http: HttpClient
   ) { }
 
   getManches() {
-    return this.http.get(`${this.backUrl}questions`);
+    //return this.http.get(`${this.backUrl}questions`);
+    return this.manche;
+  }
+  
+  setManche(newManche) {
+    this.manche = newManche;
   }
 
   fromBackToManche(mancheUnformated) {
