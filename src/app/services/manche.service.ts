@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { answerModel } from '../datamodel/answerModel';
 import { mancheModel } from '../datamodel/mancheModel';
 
 @Injectable({
@@ -9,28 +10,53 @@ export class MancheService {
   constructor(
   ) { }
 
-  getManches() {
+  getManche() {
     return this.manche;
   }
   
   setManche(newManche) {
-    this.manche = newManche;
+    this.manche = this.fromBackToManche(newManche);
   }
 
-  fromBackToManche(roundData) {
-      const question = {
-        id: roundData.round._id,
-        type: roundData.round.question.type,
-        content: roundData.round.question.content,
-        source: roundData.round.question.source
-      };
-      const answerForm = {
-        type: roundData.round.answer.type,
-        options: roundData.round.answer.options
-      };
-      return {
-        question: question,
-        answerForm: answerForm
-      };
+  fromBackToManche(roundData): mancheModel {
+    const question = {
+      id: roundData.round._id,
+      type: roundData.round.question.type,
+      content: roundData.round.question.content,
+      source: roundData.round.question.source
+    };
+    const answerForm = {
+      type: roundData.round.answer.type,
+      options: roundData.round.answer.options
+    };
+
+    const answer = {
+      answers: roundData.answer
+    }
+
+    const userAnswers = roundData.userAnswers;
+
+    return {
+      question,
+      answerForm,
+      answer,
+      userAnswers
+    };
+  }
+
+  getAnswers(): answerModel {
+    return this.manche.answer;
+  }
+
+  setAnswers(answers) {
+    this.manche.answer = answers;
+  }
+
+  getUserAnswers() {
+    return this.manche.userAnswers;
+  }
+
+  setUserAnswers(userAnswers) {
+    this.manche.userAnswers = userAnswers;
   }
 }

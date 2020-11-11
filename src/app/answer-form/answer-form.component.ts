@@ -20,7 +20,7 @@ export class AnswerFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submittedAnswerForm = {...this.answerForm};
-    this.socketService.callSocket('emitAnswered', this.submittedAnswerForm);
+    this.socketService.callSocket('emitAnswered', {answer: this.submittedAnswerForm.content});
   }
 
 

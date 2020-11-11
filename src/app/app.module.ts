@@ -16,6 +16,9 @@ import { PartieComponent } from './partie/partie.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { RoomComponent } from './room/room.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { ValidateAnswersComponent } from './validate-answers/validate-answers.component';
+import { ResultComponent } from './result/result.component';
+import { ResultService } from './services/result.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     PartieComponent,
     ConnexionComponent,
     RoomComponent,
-    SuggestionComponent
+    SuggestionComponent,
+    ValidateAnswersComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
       {path: '', component: ConnexionComponent},
       {path: 'suggestion', component: SuggestionComponent},
       {path: 'partie', component: PartieComponent},
-      {path: 'room', component: RoomComponent}
+      {path: 'room', component: RoomComponent},
+      {path: 'validate-answers', component: ValidateAnswersComponent},
+      {path: 'results', component: ResultComponent}
+
     ])
   ],
   providers: [],

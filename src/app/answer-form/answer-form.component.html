@@ -1,6 +1,6 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div *ngIf = "answerForm.type === 'plaintext' || answerForm.type === 'plaintextMultipleValue'">
-        <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
+        <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.answer">
         <br><br>
     </div>
 
@@ -18,7 +18,7 @@
         <br><br>
     </div>
 
-    <button>click</button>
+    <button>Validate</button>
 </form>
 
 {{ answerForm | json }}

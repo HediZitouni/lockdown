@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { back } from '../utils/urls';
 
-import { UserService } from '../services/user.service';
+import { UserService } from './user.service';
+import { ResultService } from './result.service';
 import { MancheService } from './manche.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class SocketService {
   constructor(
     private userService: UserService,
     private mancheService: MancheService,
+    private resultService: ResultService,
     private router: Router
   ) { }
 
@@ -33,6 +35,7 @@ export class SocketService {
     this.onAnswers();
     this.onResults();
     this.onRoom();
+    this.onValidationTable();
   }
 
   private getSocket() {
@@ -53,26 +56,34 @@ export class SocketService {
 
   private onRound() {
     this.socket.on('round', (roundData) => {
-      this.mancheService.setManche(this.mancheService.fromBackToManche(roundData));
+      this.mancheService.setManche(roundData);
       this.router.navigate(['/partie']);
     });
   }
 
   private onAnswers() {
-    this.socket.on('answers', (answers) => {
-      console.log(answers);
+    this.socket.on('answers', (manche) => {
+      this.mancheService.setManche(manche);
+      this.router.navigate(['/validate-answers']);
     });
   }
 
   private onResults() {
     this.socket.on('results', (results) => {
-      console.log(results);
+      this.resultService.setResults(results);
+      this.router.navigate(['/results']);
     });
   }
 
   private onRoom() {
     this.socket.on('room', (room) => {
       this.userService.setRoom(room);
+    });
+  }
+
+  private onValidationTable() {
+    this.socket.on('validationTable', (validation) => {
+      this.userService.modifyValidation(validation);
     });
   }
 
@@ -89,10 +100,14 @@ export class SocketService {
   }
 
   private emitAnswered(answer) {
-    this.socket.emit('answered', {answer, pseudo: this.userService.getCurrentUser().pseudo});
+    this.socket.emit('answered', {pseudo: this.userService.getCurrentUser().pseudo, ...answer});
   }
 
-  private emitValidate(validated) {
-    this.socket.emit('validate', {validated});
+  private emitValidateAnswer(userToValidate) {
+    this.socket.emit('validateAnswer', {pseudo: this.userService.getCurrentUser().pseudo, ...userToValidate});
+  }
+
+  private emitRejectAnswer(userToReject) {
+    this.socket.emit('rejectAnswer', {pseudo: this.userService.getCurrentUser().pseudo, ...userToReject});
   }
 }

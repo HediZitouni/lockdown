@@ -1,0 +1,14 @@
+<app-answer [answer]='answers'></app-answer>
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let userAnswer of userAnswers">
+        <div>{{userAnswer.pseudo}}</div>
+        <div>{{userAnswer.answer}}</div>
+        <input type="checkbox" name="validation" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>
+
+        <div *ngFor="let user of users">
+            <input type="checkbox" disabled checked="usersChoices[{{user}}]"/>
+        </div>
+    </div>
+
+    <button>Validate</button>
+</form>

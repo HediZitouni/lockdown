@@ -1,3 +1,4 @@
+import { newArray } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { userModel } from '../datamodel/userModel';
 
@@ -19,7 +20,10 @@ export class UserService {
       throw new Error(`${pseudo} already exist in the game`);
     }
 
+    newUser.usersChecked = {};
+    this.users.forEach(user => newUser.usersChecked[user.pseudo] = true)
     this.users.push(newUser);
+    sessionStorage.setItem('currentUser', JSON.stringify(newUser));
     sessionStorage.setItem('users', JSON.stringify(this.users)); // Only on the host session
   }
 
@@ -28,12 +32,17 @@ export class UserService {
   }
 
   getCurrentUser(): userModel {
-    return {pseudo: sessionStorage.getItem('pseudo')};
+    return JSON.parse(sessionStorage.getItem('currentUser'));
   }
 
   setUsers(listUsers) {
     this.users = listUsers.map((user) => {
-      return {pseudo: user.pseudo};
+      user.usersChecked = {};
+      listUsers.forEach(newUser => user.usersChecked[newUser.pseudo] = true)
+      return {
+        pseudo: user.pseudo,
+        usersChecked: user.usersChecked
+      };
     });
     sessionStorage.setItem('users', JSON.stringify(this.users));
   }
@@ -44,5 +53,15 @@ export class UserService {
 
   setRoom(room): void {
     sessionStorage.setItem('room', room);
+  }
+
+  modifyValidation(validation) {
+    const listUsers = this.getUsers();
+    for(let userName of Object.keys(validation)) {
+      const userThatChecked = listUsers.find(user => user.pseudo === userName);
+      for(let userToCheck of Object.keys(validation[userName])) {
+        userThatChecked.usersChecked[userToCheck] = validation[userName][userToCheck];
+      }
+    }
   }
 }

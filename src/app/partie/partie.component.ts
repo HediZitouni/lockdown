@@ -18,10 +18,10 @@ export class PartieComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getManches();
+    this.getManche();
   }
 
-  getManches(): void {
-    this.partie.manches = [this.mancheService.getManches()];
+  getManche(): void {
+    this.partie.manches = [this.mancheService.getManche()];
   }
 }

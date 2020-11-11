@@ -1,3 +1,4 @@
 export interface userModel {
-    pseudo: string
+    pseudo: string,
+    usersChecked: Object
 }
