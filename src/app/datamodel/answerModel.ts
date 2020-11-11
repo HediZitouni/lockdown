@@ -1,3 +1,3 @@
 export interface answerModel {
-    answers: string
+    answers: any
 }

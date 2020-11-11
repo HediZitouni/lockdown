@@ -1,4 +1,5 @@
-<app-answer [answer]='answers'></app-answer>
+<app-question [question]='manche.question'></app-question>
+<app-answer [manche]='manche'></app-answer>
 <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div *ngFor="let userAnswer of userAnswers">
         <div>{{userAnswer.pseudo}}</div>

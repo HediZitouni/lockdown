@@ -23,7 +23,8 @@ export class MancheService {
       id: roundData.round._id,
       type: roundData.round.question.type,
       content: roundData.round.question.content,
-      source: roundData.round.question.source
+      source: roundData.round.question.source,
+      options: []
     };
     const answerForm = {
       type: roundData.round.answer.type,
