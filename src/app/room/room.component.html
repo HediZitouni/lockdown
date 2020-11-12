@@ -2,4 +2,11 @@
     <span [className]="user.pseudo === currentUser.pseudo ? 'currentUser' : ''">{{user.pseudo}}</span>
 </div>
 
-<button [routerLink]="['/partie']">Start game</button>
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+    <button>Ready</button>
+</form>
+
+<div *ngIf="!room">
+    <button type='button' (click)="onClick('emitCreateGame')">Create a game</button>
+    <button type='button' (click)="onClick('emitNewUser')">Join a game</button>
+</div>

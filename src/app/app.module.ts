@@ -16,6 +16,9 @@ import { PartieComponent } from './partie/partie.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { RoomComponent } from './room/room.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { ValidateAnswersComponent } from './validate-answers/validate-answers.component';
+import { ResultComponent } from './result/result.component';
+import { ResultService } from './services/result.service';
 import { ValidateSuggestionComponent } from './validate-suggestion/validate-suggestion.component';
 
 @NgModule({
@@ -29,6 +32,8 @@ import { ValidateSuggestionComponent } from './validate-suggestion/validate-sugg
     ConnexionComponent,
     RoomComponent,
     SuggestionComponent,
+    ValidateAnswersComponent,
+    ResultComponent,
     ValidateSuggestionComponent
   ],
   imports: [
@@ -41,7 +46,10 @@ import { ValidateSuggestionComponent } from './validate-suggestion/validate-sugg
       {path: 'validation', component: ValidateSuggestionComponent},
       {path: 'suggestion', component: SuggestionComponent},
       {path: 'partie', component: PartieComponent},
-      {path: 'room', component: RoomComponent}
+      {path: 'room', component: RoomComponent},
+      {path: 'validate-answers', component: ValidateAnswersComponent},
+      {path: 'results', component: ResultComponent}
+
     ])
   ],
   providers: [],

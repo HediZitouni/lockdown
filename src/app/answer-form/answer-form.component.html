@@ -6,7 +6,7 @@
 
     <div *ngIf = "answerForm.type === 'radio'">
         <div *ngFor = "let option of answerForm.options">
-            <input type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.answer"><label>{{option}}</label>
+            <input type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.content"><label>{{option}}</label>
         </div>
         <br><br>
     </div>
@@ -18,7 +18,7 @@
         <br><br>
     </div>
 
-    <button>click</button>
+    <button>Validate</button>
 </form>
 
 {{ answerForm | json }}
