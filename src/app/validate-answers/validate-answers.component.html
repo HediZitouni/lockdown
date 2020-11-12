@@ -1,13 +1,15 @@
 <app-question [question]='manche.question'></app-question>
 <app-answer [manche]='manche'></app-answer>
+<br/>
+<br/>
 <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div *ngFor="let userAnswer of userAnswers">
         <div>{{userAnswer.pseudo}}</div>
         <div>{{userAnswer.answer}}</div>
-        <input type="checkbox" name="validation" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>
-
+        <input type="checkbox" name="validation-userAnswer.pseudo" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>
+        <br/>
         <div *ngFor="let user of users">
-            <input type="checkbox" disabled checked="usersChoices[{{user}}]"/>
+            <label>{{user.pseudo}}</label><input type="checkbox" name='validation-{{user.pseudo}}-userAnswer.pseudo' [(ngModel)]="user.usersChecked[userAnswer.pseudo]" disabled/>
         </div>
     </div>
 

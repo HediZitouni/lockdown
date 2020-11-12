@@ -22,6 +22,7 @@ export class PartieComponent implements OnInit {
   }
 
   getManche(): void {
-    this.partie.manches = [this.mancheService.getManche()];
+    this.mancheService.$manche.subscribe(manche => this.partie.manches = [manche]);
+    //this.partie.manches = [this.mancheService.getManche()];
   }
 }

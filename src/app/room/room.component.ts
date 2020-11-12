@@ -24,7 +24,7 @@ export class RoomComponent implements OnInit {
   }
 
   getUsers() {
-    this.users = this.userService.getUsers();
+    this.userService.$users.subscribe(users => this.users = users);
   }
 
   getCurrentUser() {

@@ -14,7 +14,6 @@ import { UserService } from '../services/user.service';
 export class ValidateAnswersComponent implements OnInit {
 
   users: userModel[];
-  usersChoices: {};
 
   answers: answerModel;
   userAnswers: any;
@@ -27,12 +26,16 @@ export class ValidateAnswersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.manche = this.mancheService.getManche();
+    //this.manche = this.mancheService.getManche();
+    //this.users = this.userService.getUsers().filter(user => user.pseudo !== this.userService.getCurrentUser().pseudo);
+    this.mancheService.$manche.subscribe(manche => this.manche = manche);
+    this.userService.$users.subscribe(users => {
+      this.users = users.filter(user => user.pseudo !== this.userService.getCurrentUser().pseudo);
+    });
+
     this.answers = this.manche.answer;
     this.userAnswers = this.manche.userAnswers;
     this.answersValidation = this.userAnswers.map(ua => ua.pseudo);
-    this.users = this.userService.getUsers().filter(user => user.pseudo !== this.userService.getCurrentUser().pseudo);
-    this.users.forEach(user => this.usersChoices = {...user, checked: true})
   }
 
     /**

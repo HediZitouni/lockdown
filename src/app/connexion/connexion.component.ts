@@ -10,7 +10,7 @@ import { SocketService } from '../services/socket.service';
   styleUrls: ['./connexion.component.scss']
 })
 export class ConnexionComponent implements OnInit {
-  newUser: userModel = {pseudo:'', usersChecked: {}};
+  newUser: userModel = {pseudo:'', usersChecked: {}, ready: false};
   connected: boolean = false; // Find a way to know if he is connected
   constructor(
     private userService: UserService,

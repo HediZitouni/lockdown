@@ -1,5 +1,5 @@
-import { newArray } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { userModel } from '../datamodel/userModel';
 
 @Injectable({
@@ -7,7 +7,11 @@ import { userModel } from '../datamodel/userModel';
 })
 export class UserService {
   users: userModel[];
-  constructor() { }
+  $users: BehaviorSubject<userModel[]>;
+  constructor() {
+    this.users = [];
+    this.$users = new BehaviorSubject(this.users);
+   }
 
   setUser(newUser) {
     const {pseudo} = newUser;
@@ -25,6 +29,7 @@ export class UserService {
     this.users.push(newUser);
     sessionStorage.setItem('currentUser', JSON.stringify(newUser));
     sessionStorage.setItem('users', JSON.stringify(this.users)); // Only on the host session
+    this.$users.next(this.users);
   }
 
   getUsers(): userModel[] {
@@ -36,15 +41,21 @@ export class UserService {
   }
 
   setUsers(listUsers) {
-    this.users = listUsers.map((user) => {
-      user.usersChecked = {};
-      listUsers.forEach(newUser => user.usersChecked[newUser.pseudo] = true)
-      return {
-        pseudo: user.pseudo,
-        usersChecked: user.usersChecked
-      };
+    this.users = this.getUsers();
+    listUsers.forEach(updatedUser => {
+      const indexUser = this.users.findIndex(user => user.pseudo === updatedUser.pseudo);
+      if (indexUser === -1) {
+        this.users.push({pseudo: updatedUser.pseudo, ready:false, usersChecked:null});
+      }
+      const currentUser = this.users.find(user => user.pseudo === updatedUser.pseudo);
+      currentUser.ready = updatedUser.ready;
+      if (!currentUser.usersChecked) {
+        currentUser.usersChecked = {};
+        listUsers.forEach(newUser => currentUser.usersChecked[newUser.pseudo] = true)
+      }
     });
     sessionStorage.setItem('users', JSON.stringify(this.users));
+    this.$users.next(this.users);
   }
 
   getRoom(): string {
@@ -57,11 +68,14 @@ export class UserService {
 
   modifyValidation(validation) {
     const listUsers = this.getUsers();
-    for(let userName of Object.keys(validation)) {
-      const userThatChecked = listUsers.find(user => user.pseudo === userName);
-      for(let userToCheck of Object.keys(validation[userName])) {
-        userThatChecked.usersChecked[userToCheck] = validation[userName][userToCheck];
+    for(let user of Object.keys(validation)) {
+      for(let userNameThatChecked of Object.keys(validation[user])) {
+        const userThatChecked = listUsers.find(user => user.pseudo === userNameThatChecked);
+        userThatChecked.usersChecked[user] = validation[user][userNameThatChecked];
       }
     }
+    this.users = listUsers;
+    sessionStorage.setItem('users', JSON.stringify(this.users));
+    this.$users.next(this.users);
   }
 }

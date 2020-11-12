@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { answerModel } from '../datamodel/answerModel';
 import { mancheModel } from '../datamodel/mancheModel';
 
@@ -7,15 +8,20 @@ import { mancheModel } from '../datamodel/mancheModel';
 })
 export class MancheService {
   manche: mancheModel;
+  $manche: BehaviorSubject<mancheModel>;
   constructor(
-  ) { }
+  ) {
+    this.manche = null;
+    this.$manche = new BehaviorSubject(this.manche);
+  }
 
-  getManche() {
+  getManche():mancheModel {
     return this.manche;
   }
   
   setManche(newManche) {
     this.manche = this.fromBackToManche(newManche);
+    this.$manche.next(this.manche);
   }
 
   fromBackToManche(roundData): mancheModel {
