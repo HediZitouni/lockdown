@@ -14,8 +14,7 @@ export class ConnexionComponent implements OnInit {
   connected: boolean = false; // Find a way to know if he is connected
   constructor(
     private userService: UserService,
-    private router: Router,
-    private socketService: SocketService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +33,7 @@ export class ConnexionComponent implements OnInit {
 
   isConnected() {
     const currentUser = this.userService.getCurrentUser();
-    if (!!currentUser.pseudo) {
+    if (currentUser && !!currentUser.pseudo) {
       this.router.navigate(['/room']);
     }
   }

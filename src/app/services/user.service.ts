@@ -9,7 +9,7 @@ export class UserService {
   users: userModel[];
   $users: BehaviorSubject<userModel[]>;
   constructor() {
-    this.users = [];
+    this.users = this.getUsers();
     this.$users = new BehaviorSubject(this.users);
    }
 
