@@ -19,6 +19,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { ValidateAnswersComponent } from './validate-answers/validate-answers.component';
 import { ResultComponent } from './result/result.component';
 import { ResultService } from './services/result.service';
+import { ValidateSuggestionComponent } from './validate-suggestion/validate-suggestion.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ResultService } from './services/result.service';
     RoomComponent,
     SuggestionComponent,
     ValidateAnswersComponent,
-    ResultComponent
+    ResultComponent,
+    ValidateSuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { ResultService } from './services/result.service';
     HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: ConnexionComponent},
+      {path: 'validation', component: ValidateSuggestionComponent},
       {path: 'suggestion', component: SuggestionComponent},
       {path: 'partie', component: PartieComponent},
       {path: 'room', component: RoomComponent},

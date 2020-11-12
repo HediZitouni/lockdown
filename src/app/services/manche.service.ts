@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { answerModel } from '../datamodel/answerModel';
 import { mancheModel } from '../datamodel/mancheModel';
+import { questions } from '../utils/urls';
 
 @Injectable({
   providedIn: 'root'
