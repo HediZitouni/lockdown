@@ -19,6 +19,7 @@ export class ValidateAnswersComponent implements OnInit {
   userAnswers: any;
   answersValidation: any;
   manche: mancheModel;
+  submitted: boolean = false;
   constructor(
     private mancheService: MancheService,
     private socketService: SocketService,
@@ -54,6 +55,7 @@ export class ValidateAnswersComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     this.socketService.callSocket('emitReady');
   }
 }

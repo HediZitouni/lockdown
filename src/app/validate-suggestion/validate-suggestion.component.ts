@@ -20,7 +20,7 @@ export class ValidateSuggestionComponent implements OnInit {
 
   getSuggestion(): void {
     this.suggestionService.getSuggestion().toPromise().then((res: mancheModel[]) => {
-      this.suggestions = this.mancheService.fromBackToManche(res);
+      this.suggestions = [this.mancheService.fromBackToManche(res)];
     }, error => {
       console.log(error);
     });
