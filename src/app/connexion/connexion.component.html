@@ -1,5 +1,8 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <label>Pseudo</label>
-    <input type="text" name="Pseudo" placeholder="Enter your pseudo" [(ngModel)] = "newUser.pseudo">
-    <button>Validate</button>
+    <div class="connexion-input">
+        <input type="text" name="Pseudo" placeholder="Enter your pseudo" [(ngModel)] = "newUser.pseudo">
+    </div>
+    <div class="connexion-button">
+        <button><mat-icon>login</mat-icon></button>
+    </div>
 </form>
