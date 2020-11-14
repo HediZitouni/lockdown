@@ -1,24 +1,24 @@
 @import "../variables";
 
-.currentUser {
-    color: red;
+.room {
+    width: 600px;
 }
 
-.room {
-    background-color: $middle-grey;
-    width: 600px;
+.users {
     box-sizing: border-box;
     padding: 2px 0 2px 0;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     align-content: stretch;
+    margin-bottom: 80px;
 }
 
 .user {
+    position: relative;
     display: flex;
     justify-content: center;
-    background-color: $dark-grey;
+    background-color: $middle-grey;
     width: 30%;
     height: 50px;
     border-radius: 15px;
@@ -29,5 +29,44 @@
         height: 100%;
         line-height: 50px;
         text-align: center;
+        color: $light-grey;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .pseudo {
+            max-width: 30px;
+            text-overflow: ellipsis;
+        }
     }
+}
+
+form, .select-room {
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    button {
+        height: 35px;
+        width: 30%;
+        border-radius: 10px;
+        background-color: $middle-grey;
+        color: $light-grey;
+        font-size: $size-normal;
+    }
+
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+.ready {
+    color: green;
+    position: absolute;
+    left: 5px;
+    top: -2px;
+}
+
+.currentUser {
+    color: red;
 }

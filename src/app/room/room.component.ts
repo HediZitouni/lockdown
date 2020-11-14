@@ -32,7 +32,7 @@ export class RoomComponent implements OnInit {
   }
 
   getRoom() {
-    this.room = this.userService.getRoom();
+    this.userService.$room.subscribe(room => this.room = room);
   }
 
   onSubmit() {
