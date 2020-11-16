@@ -1,0 +1,90 @@
+@import "../variables";
+
+.plaintext {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $middle-grey;
+}
+.input-text-container {
+    width: 85%;
+    height: 40px;
+}
+
+.enter-button {
+    height: 40px;
+    width: 15%;
+    button {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mat-icon {
+            color: $light-grey;
+            font-size: $size-login-icon;
+            height: $size-login-icon;
+            width: $size-login-icon;
+            line-height: $size-login-icon;
+        }
+    }
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+.radio, .checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+
+.option {
+    width: 30%;
+    background-color: $middle-grey;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: $light-grey;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.option:hover {
+    overflow: visible;
+    text-overflow: initial;
+    background-color: $middle-grey-lighter;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+        height: 40px;
+        width: 30%;
+        border-radius: 10px;
+        background-color: $middle-grey;
+        color: $light-grey;
+        font-size: $size-normal;
+    }
+
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+input[type=checkbox], input[type=radio] {
+    display: none;
+}
+
+.checked {
+    background-color: $light-grey;
+    color: $middle-grey;
+}
+.checked:hover {
+    background-color: $middle-grey;
+    color: $light-grey;
+}

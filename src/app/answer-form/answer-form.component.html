@@ -1,22 +1,30 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <div *ngIf = "answerForm.type === 'plaintext' || answerForm.type === 'plaintextMultipleValue'">
-        <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
-        <br><br>
+    <div class="plaintext" *ngIf = "answerForm.type === 'plaintext' || answerForm.type === 'plaintextMultipleValue'">
+        <div class="input-text-container">
+            <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
+        </div>
+        <div class="enter-button" [disabled]="!submitted">
+            <button><mat-icon>subdirectory_arrow_right</mat-icon></button>
+        </div>
     </div>
 
-    <div *ngIf = "answerForm.type === 'radio'">
-        <div *ngFor = "let option of answerForm.options">
-            <input type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.content"><label>{{option}}</label>
+    <div class='radio' *ngIf = "answerForm.type === 'radio'">
+        <div (click)="triggerOption(option)" [ngClass]="{'checked': answerForm.content === option}" class="option" *ngFor = "let option of answerForm.options">
+            <input style="pointer-events: none" type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.content">
+            <label style="pointer-events: none">{{option}}</label>
         </div>
         <br><br>
     </div>
 
-    <div *ngIf = "answerForm.type === 'checkbox'">
-        <div *ngFor = "let option of answerForm.options">
-            <input type="checkbox" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" (change)="onChange($event)"><label>{{option}}</label>
+    <div class='checkbox' *ngIf = "answerForm.type === 'checkbox'">
+        <div (click)="onChange($event)" [ngClass]="{'checked': (answerForm.content || []).includes(option)}" class="option" *ngFor = "let option of answerForm.options">
+            <input style="pointer-events: none" type="checkbox" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}">
+            <label style="pointer-events: none">{{option}}</label>
         </div>
         <br><br>
     </div>
 
-    <button *ngIf='!submitted'>Validate</button>
+    <div class="submit-container" *ngIf="!submitted && answerForm.type !== 'plaintext' && answerForm.type !== 'plaintextMultipleValue'">
+        <button>Validate</button>
+    </div>
 </form>

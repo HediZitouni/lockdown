@@ -33,11 +33,11 @@
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
 
-        .pseudo {
-            max-width: 30px;
-            text-overflow: ellipsis;
-        }
+    .user-info:hover {
+        overflow: visible;
+        text-overflow: initial;
     }
 }
 
