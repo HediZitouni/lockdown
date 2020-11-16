@@ -7,9 +7,7 @@
         </audio>
     </div>
 
-    <div *ngIf = "question.type === 'textWithImage'">
-        <div>
-            <img src="{{question.source}}">
-        </div>
+    <div class="image-container" *ngIf = "question.type === 'textWithImage'">
+        <img src="{{question.source}}">
     </div>
 </div>

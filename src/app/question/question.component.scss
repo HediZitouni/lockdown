@@ -1,12 +1,12 @@
 @import "../variables";
 
 img {
-    height: 100px;
-    width: 100px;
+    max-height: 250px;
 }
 
 .question-container {
     margin-bottom: 200px;
+    margin-bottom: 20px;
 }
 
 .question {
@@ -17,4 +17,9 @@ img {
     text-align: center;
     font-size: 1.3em;
     border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    text-align: center;
 }
