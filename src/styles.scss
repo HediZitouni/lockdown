@@ -27,3 +27,11 @@ input[type=text] {
     font-size: $size-input-big;
     background-color: $middle-grey;
 }
+
+app-root {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

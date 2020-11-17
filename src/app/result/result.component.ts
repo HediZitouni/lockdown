@@ -14,7 +14,7 @@ export class ResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.results = this.resultService.getResults().sort( (a,b) => {return a.points - b.points;});
+    this.results = this.resultService.getResults().sort( (a,b) => {return b.points - a.points;});
   }
 
 }

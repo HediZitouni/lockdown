@@ -1,0 +1,17 @@
+@import "../variables";
+
+.answer-container {
+    display: flex;
+    justify-content: space-around;
+
+    div {
+        width: 30%;
+        background-color: $middle-grey;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: $light-grey;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

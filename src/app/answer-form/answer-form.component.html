@@ -3,7 +3,7 @@
         <div class="input-text-container">
             <input type="text" name="{{answerForm.type}}{{answerForm.id}}" placeholder="Enter an answer" [(ngModel)] = "answerForm.content">
         </div>
-        <div class="enter-button" [disabled]="!submitted">
+        <div class="enter-button" *ngIf="!submitted">
             <button><mat-icon>subdirectory_arrow_right</mat-icon></button>
         </div>
     </div>
@@ -13,7 +13,6 @@
             <input style="pointer-events: none" type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.content">
             <label style="pointer-events: none">{{option}}</label>
         </div>
-        <br><br>
     </div>
 
     <div class='checkbox' *ngIf = "answerForm.type === 'checkbox'">
@@ -21,7 +20,6 @@
             <input style="pointer-events: none" type="checkbox" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}">
             <label style="pointer-events: none">{{option}}</label>
         </div>
-        <br><br>
     </div>
 
     <div class="submit-container" *ngIf="!submitted && answerForm.type !== 'plaintext' && answerForm.type !== 'plaintextMultipleValue'">

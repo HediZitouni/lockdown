@@ -1,5 +1,13 @@
 @import "../variables";
 
+
+.room-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .room {
     width: 600px;
 }
