@@ -1,0 +1,62 @@
+@import "../variables";
+
+.validate-answers-container {
+    height: 100vh;
+    margin-top: 20px;
+}
+
+.validate-answers {
+    width: 600px;
+}
+
+.question-container {
+    padding-bottom: 100px;
+}
+
+form {
+    width: 600px;
+}
+
+.answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 100%;
+    margin-bottom: 100px;
+
+    .userAnswer {
+        max-width: 40%;
+        margin: 0 3px 0 3px;
+
+        .pseudo {
+            color: $light-grey;
+            font-size: $size-normal;
+        }
+
+        .answer {
+            color: $light-grey;
+            font-size: $size-normal;
+            background-color: $middle-grey;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 10px;
+            width: 180px;
+            max-width: 100%;
+        }
+    }
+}
+
+.submit {
+    text-align: center;
+    button {
+        height: 35px;
+        width: 30%;
+        border-radius: 10px;
+        background-color: $middle-grey;
+        color: $light-grey;
+        font-size: $size-normal;
+    }
+}

@@ -1,0 +1,18 @@
+@import "variables";
+
+.tmp-clear-storage {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    height: 35px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: $middle-grey;
+    color: $light-grey;
+    font-size: $size-normal;
+
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}

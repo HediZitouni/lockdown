@@ -1,0 +1,21 @@
+<div class="room-container">
+    <div class="room">
+        <div class="users">
+            <div class="user" *ngFor="let user of users">
+                <mat-icon *ngIf="user.ready" class="ready">check</mat-icon>
+                <div class="user-info">
+                    <span class="pseudo" [ngClass]="{'currentUser': user.pseudo === currentUser.pseudo}">{{user.pseudo}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="select-room" *ngIf="!room">
+            <button type='button' (click)="onClick('emitCreateGame')">Create a game</button>
+            <button type='button' (click)="onClick('emitNewUser')">Join a game</button>
+        </div>
+        
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <button>Ready</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="suggestion-container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <div>New question</div>
+    
+        <input type="text" name="question" placeholder="Enter a question" [(ngModel)] = "question.content" required>
+    
+        <div class="question-types">
+            <div (click)="triggerOption($event)" [ngClass]= "{'checked': question.type === 'text'}">
+                <input type="radio" name="questionType" value="text" [(ngModel)] = "question.type" (change)="onChangeQuestionType()" required>
+                <label>Text</label>
+            </div>
+            <div (click)="triggerOption($event)" [ngClass]= "{'checked': question.type === 'textWithImage'}">
+                <input type="radio" name="questionType" value="textWithImage" [(ngModel)] = "question.type" (change)="onChangeQuestionType()" required>
+                <label>image</label>
+            </div>
+        </div>
+    
+        <div>New answers (If an answer has multiple way to be validated, separate them by a coma (,))</div>
+    
+        <div *ngIf= "question.type === 'textWithImage'">
+            <input type="text" name="url" placeholder="Enter the image url" [(ngModel)] = "question.source">
+        </div>
+    
+        <div class="answer-types">
+            <div (click)="triggerOption($event)" [ngClass]= "{'checked': answer.type === 'plaintext'}">
+                <input type="radio" name="answerType" value="plaintext" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required>
+                <label>Text</label>
+            </div>
+
+            <div (click)="triggerOption($event)" [ngClass]= "{'checked': answer.type === 'checkbox'}">
+                <input type="radio" name="answerType" value="checkbox" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required>
+                <label>checkbox</label>
+            </div>
+
+            <div (click)="triggerOption($event)" [ngClass]= "{'checked': answer.type === 'radio'}">
+                <input type="radio" name="answerType" value="radio" [(ngModel)] = "answer.type" (change)="onChangeAnswerType()" required>
+                <label>radio</label>
+            </div>
+        </div>
+    
+        <div class="option" *ngFor="let option of answer.options">
+            <div class="option-container"><span>{{option}}</span></div>
+            <div class="buttons">
+                <button type='button' (click)="onClickRemove(option)"><mat-icon>delete</mat-icon></button>
+                <button type='button' [ngClass] = "{'validated': isOptionValidated(option)}" (click)="onClickValidate(option)"><mat-icon>push_pin</mat-icon></button>
+            </div>
+        </div>
+        <div class="options">
+            <div class="option-input">
+                <input type="text" name="option" placeholder="Enter an option" [(ngModel)] = "currentAnswer">
+            </div>
+            <div class="button-input" (click)="onClick()">
+                <button type="button"><mat-icon>add</mat-icon></button>
+            </div>
+        </div>
+    
+        <div class="submit-container">
+            <button (submit)="onSubmit()">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+<div class="question-container">
+    <div class="question">{{question.content}}</div>
+
+    <div *ngIf = "question.type === 'sound'">
+        <audio controls>
+            <source src="{{question.source}}" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="image-container" *ngIf = "question.type === 'textWithImage'">
+        <img src="{{question.source}}">
+    </div>
+</div>
