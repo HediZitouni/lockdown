@@ -1,0 +1,157 @@
+@import "../variables";
+
+.suggestion-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 600px;
+    color: $light-grey;
+
+    input {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    input[type=radio] {
+        display: none;
+    }
+
+    .question-types, .answer-types {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0 40px 0;
+
+        div {
+            border-radius: 10px;
+            width: 30%;
+            background-color: $middle-grey;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: $light-grey;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .checked {
+            background-color: $light-grey;
+            color: $middle-grey;
+        }
+    }
+}
+
+.options {
+    background-color: $middle-grey;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    margin: 10px 0 20px 0;
+    .option-input {
+        width: 85%;
+    }
+
+    .button-input {
+        width: 15%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            height: 100%;
+            line-height: 100%;
+            pointer-events: none;
+        }
+    }
+
+    .button-input:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+.submit-container {
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    button {
+        height: 40px;
+        width: 30%;
+        border-radius: 10px;
+        background-color: $middle-grey;
+        color: $light-grey;
+        font-size: $size-normal;
+    }
+}
+
+label {
+    pointer-events: none;
+}
+
+.option {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid;
+    .option-container {
+        color: $light-grey;
+        height: 100%;
+        line-height: 30px;
+        margin-right: 20px;
+        padding: 0 5px 0 5px;
+        max-width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: $size-normal;
+    }
+    .option-container:hover {
+        overflow: visible;
+        text-overflow: initial;
+    }
+}
+
+.buttons {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    button {
+        height: 100%;
+        line-height: 30px;
+        margin-right: 20px;
+        width: 40%;
+        border-radius: 10px;
+        border: 1px solid $light-grey;
+
+        mat-icon {
+            font-size: $size-input-big;
+        }
+    }
+
+    button:hover {
+        background-color: $light-grey;
+        mat-icon {
+            color: $middle-grey;
+        }
+    }
+}
+
+.validated {
+    background-color: $light-grey;
+        mat-icon {
+            color: $middle-grey;
+        }
+}
+
+mat-icon {
+    color: $light-grey;
+    font-size: $size-login-icon;
+    height: $size-login-icon;
+    width: $size-login-icon;
+    line-height: $size-login-icon;
+    pointer-events: none;
+}

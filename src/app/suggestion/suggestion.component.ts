@@ -33,12 +33,21 @@ export class SuggestionComponent implements OnInit {
     if (this.currentAnswer) {
       this.answer.options.push(this.currentAnswer);
       this.currentAnswer = '';
+    } else {
+      alert('You wrote an empty option');
     }
   }
 
   onClickRemove(optionToRemove) {
-    const index = this.answer.options.findIndex(option => option === optionToRemove);
-    this.answer.options.splice(index, 1);
+    const indexInOptions = this.answer.options.findIndex(option => option === optionToRemove);
+    this.answer.options.splice(indexInOptions, 1);
+    if (this.answer.type === 'checkbox') {
+      this.answer.answers = this.answer.answers.filter(index => index !== indexInOptions);
+    } else if (this.answer.type === 'radio') {
+      this.answer.answers = this.answer.answers !== indexInOptions ? this.answer.answers : null;
+    } else {
+      this.answer.answers = this.answer.answers.filter(arrayAnswer => arrayAnswer.findIndex(option => option === optionToRemove) === -1);
+    }
   }
 
   onChangeAnswerType() {
@@ -58,6 +67,18 @@ export class SuggestionComponent implements OnInit {
       this.answer.answers = this.answer.options.findIndex(option => option === optionToValidate);
     } else {
       this.answer.answers = [optionToValidate.split(',')];
+    }
+  }
+
+  isOptionValidated(optionToCheck): boolean {
+    const indexInOptions = this.answer.options.findIndex(option => option === optionToCheck);
+    
+    if (this.answer.type === 'checkbox') {
+      return this.answer.answers.filter(index => index === indexInOptions).length !== 0;
+    } else if (this.answer.type === 'radio') {
+      return this.answer.answers === indexInOptions;
+    } else {
+      return this.answer.answers.filter(arrayAnswer => arrayAnswer.findIndex(option => option === optionToCheck) !== -1).length !== 0;
     }
   }
 
@@ -83,6 +104,18 @@ export class SuggestionComponent implements OnInit {
     } else {
       alert('Il vous manque au moins une réponse');
     }
+
+    this.question = {
+      id: 0,
+      content: '',
+      type:'text',
+      source:''
+    };
+    this.answer = {
+      type:'plaintext',
+      options:[],
+      answers:[]
+    }
   }
 
   clearAnswer() {
@@ -90,6 +123,22 @@ export class SuggestionComponent implements OnInit {
       type:'plaintext',
       options:[],
       answers:[]
+    }
+  }
+
+  triggerOption($event) {
+    this.onChangeAnswerType();
+    const {name, value} = $event.target.children[0];
+
+    switch (name) {
+      case 'questionType':
+        this.question.type = value;
+        break;
+      case 'answerType':
+        this.answer.type = value;
+        break;
+      default:
+        break;
     }
   }
 }

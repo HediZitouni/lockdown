@@ -1,0 +1,50 @@
+@import "../variables";
+
+.validation-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+app-answer-form {
+    pointer-events: none;
+}
+
+.suggestion {
+    width: 600px;
+
+    label {
+        color: $light-grey
+    }
+
+    .question-container, .answer-form-container, .answer-container {
+        margin: 20px 0 20px 0;
+        padding: 5px 5px 5px 5px;
+        border: 1px solid $light-grey;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    button {
+        background-color: $light-grey;
+        color: $middle-grey;
+        font-size: $size-normal;
+        height: 100%;
+        line-height: 30px;
+        margin-right: 20px;
+        width: 30%;
+        border-radius: 10px;
+
+        mat-icon {
+            font-size: $size-input-big;
+        }
+    }
+
+    button:hover {
+        background-color: $middle-grey;
+        color: $light-grey;
+    }
+}

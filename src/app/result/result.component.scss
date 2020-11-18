@@ -1,0 +1,27 @@
+@import "../variables";
+
+.ranking {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    height: 100vh;
+}
+
+.user {
+    background-color: $middle-grey;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin: 2px 0 2px 0;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+
+    .pseudo, .result {
+        color: $light-grey;
+        font-size: $size-normal;
+        line-height: 40px;
+    }
+}

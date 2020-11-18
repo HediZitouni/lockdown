@@ -20,6 +20,8 @@ import { ValidateAnswersComponent } from './validate-answers/validate-answers.co
 import { ResultComponent } from './result/result.component';
 import { ResultService } from './services/result.service';
 import { ValidateSuggestionComponent } from './validate-suggestion/validate-suggestion.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { ValidateSuggestionComponent } from './validate-suggestion/validate-sugg
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatIconModule,
     RouterModule.forRoot([
       {path: '', component: ConnexionComponent},
       {path: 'validation', component: ValidateSuggestionComponent},
@@ -50,7 +53,8 @@ import { ValidateSuggestionComponent } from './validate-suggestion/validate-sugg
       {path: 'validate-answers', component: ValidateAnswersComponent},
       {path: 'results', component: ResultComponent}
 
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

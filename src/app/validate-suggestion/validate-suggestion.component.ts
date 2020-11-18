@@ -9,6 +9,7 @@ import { MancheService } from '../services/manche.service';
 })
 export class ValidateSuggestionComponent implements OnInit {
   suggestions: mancheModel[];
+  minSuggestion: boolean = true;
   constructor(
     private suggestionService: SuggestionService,
     private mancheService: MancheService
@@ -16,11 +17,19 @@ export class ValidateSuggestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSuggestion();
+    this.suggestions = [];
   }
 
   getSuggestion(): void {
     this.suggestionService.getSuggestion().toPromise().then((res: mancheModel[]) => {
-      this.suggestions = [this.mancheService.fromBackToManche(res)];
+      if (res.length > 0 ) {
+        this.suggestions = [this.mancheService.fromBackToManche(res[0])];
+        this.minSuggestion = true;
+      } else {
+        this.minSuggestion = false;
+        alert('There is no suggestion');
+      }
+      
     }, error => {
       console.log(error);
     });

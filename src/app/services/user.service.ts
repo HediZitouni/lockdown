@@ -8,9 +8,14 @@ import { userModel } from '../datamodel/userModel';
 export class UserService {
   users: userModel[];
   $users: BehaviorSubject<userModel[]>;
+  room: string;
+  $room: BehaviorSubject<string>;
   constructor() {
     this.users = this.getUsers();
     this.$users = new BehaviorSubject(this.users);
+
+    this.room = this.getRoom();
+    this.$room = new BehaviorSubject(this.room);
    }
 
   setUser(newUser) {
@@ -63,6 +68,8 @@ export class UserService {
   }
 
   setRoom(room): void {
+    this.room = room;
+    this.$room.next(this.room);
     sessionStorage.setItem('room', room);
   }
 

@@ -1,17 +1,24 @@
-<app-question [question]='manche.question'></app-question>
-<app-answer [manche]='manche'></app-answer>
-<br/>
-<br/>
-<form #form="ngForm" (ngSubmit)="onSubmit()">
-    <div *ngFor="let userAnswer of userAnswers">
-        <div>{{userAnswer.pseudo}}</div>
-        <div>{{userAnswer.answer}}</div>
-        <input type="checkbox" name="validation-userAnswer.pseudo" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>
-        <br/>
-        <div *ngFor="let user of users">
-            <label>{{user.pseudo}}</label><input type="checkbox" name='validation-{{user.pseudo}}-userAnswer.pseudo' [(ngModel)]="user.usersChecked[userAnswer.pseudo]" disabled/>
+<div class="validate-answers-container">
+    <div class="validate-answers">
+        <div class="question-container">
+            <app-question [question]='manche.question'></app-question>
+            <app-answer [manche]='manche'></app-answer>
         </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="answers">
+                <div class="userAnswer" *ngFor="let userAnswer of userAnswers">
+                    <div class="pseudo">{{userAnswer.pseudo}}</div>
+                    <div class="answer">{{userAnswer.answer}}</div>
+                    <div class="validations">
+                        <input type="checkbox" name="validation-userAnswer.pseudo" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>
+                        <input *ngFor="let user of users" type="checkbox" name='validation-{{user.pseudo}}-userAnswer.pseudo' [(ngModel)]="user.usersChecked[userAnswer.pseudo]" disabled/>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="submit">
+                <button *ngIf='!submitted'>Validate</button>
+            </div>
+        </form>
     </div>
-
-    <button *ngIf='!submitted'>Validate</button>
-</form>
+</div>

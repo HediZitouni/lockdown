@@ -1,0 +1,47 @@
+@import "../variables";
+
+.connexion-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    background-color: $middle-grey;
+    width: 440px;
+    height: 50px;
+}
+
+.connexion-input {
+    width: 85%;
+    height: 100%;
+}
+
+.connexion-button {
+    height: 100%;
+    width: 15%;
+    button {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mat-icon {
+            color: $light-grey;
+            font-size: $size-login-icon;
+            height: $size-login-icon;
+            width: $size-login-icon;
+            line-height: $size-login-icon;
+        }
+    }
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+::placeholder {
+    color: $light-grey;
+}
