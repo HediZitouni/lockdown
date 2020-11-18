@@ -27,7 +27,7 @@ export class MancheService {
 
   fromBackToManche(roundData): mancheModel {
     const question = {
-      id: roundData.round._id,
+      id: roundData.round.id,
       type: roundData.round.question.type,
       content: roundData.round.question.content,
       source: roundData.round.question.source,

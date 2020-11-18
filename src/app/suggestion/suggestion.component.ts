@@ -104,6 +104,18 @@ export class SuggestionComponent implements OnInit {
     } else {
       alert('Il vous manque au moins une réponse');
     }
+
+    this.question = {
+      id: 0,
+      content: '',
+      type:'text',
+      source:''
+    };
+    this.answer = {
+      type:'plaintext',
+      options:[],
+      answers:[]
+    }
   }
 
   clearAnswer() {

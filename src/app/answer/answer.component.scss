@@ -14,4 +14,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    div:hover {
+        overflow: visible;
+        text-overflow: initial;
+    }
 }
