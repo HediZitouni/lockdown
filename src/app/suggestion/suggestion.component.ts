@@ -16,6 +16,10 @@ export class SuggestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initQuestionAnswer();
+  }
+
+  initQuestionAnswer() {
     this.question = {
       id: 0,
       content: '',
@@ -101,20 +105,11 @@ export class SuggestionComponent implements OnInit {
         question: this.question,
         answer: this.answer
       });
+
+      this.initQuestionAnswer();
+
     } else {
       alert('Il vous manque au moins une réponse');
-    }
-
-    this.question = {
-      id: 0,
-      content: '',
-      type:'text',
-      source:''
-    };
-    this.answer = {
-      type:'plaintext',
-      options:[],
-      answers:[]
     }
   }
 
