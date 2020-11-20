@@ -1,0 +1,31 @@
+@import "../variables.scss";
+$navbar-height: 50px;
+
+.navbar-content {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: $navbar-height;
+    box-shadow: 0 6px 19px 0px rgba(0,0,0,1);;
+    a {
+        text-decoration: none;
+    }
+    div, a div {
+        height: 100%;
+        line-height: $navbar-height;
+        padding: 0 20px 0 20px;
+        color: $light-grey;
+    }
+
+    div:hover {
+        background-color: $dark-grey-ligther;
+        cursor: pointer;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .navbar-content {
+        display: flex;
+        flex-direction: column;
+    }
+  }
