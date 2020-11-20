@@ -1,7 +1,6 @@
 @import "../variables";
 
 .validation-container {
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +11,8 @@ app-answer-form {
 }
 
 .suggestion {
-    width: 600px;
+    max-width: 600px;
+    min-width: 200px;
 
     label {
         color: $light-grey
@@ -34,7 +34,6 @@ app-answer-form {
         font-size: $size-normal;
         height: 100%;
         line-height: 30px;
-        margin-right: 20px;
         width: 30%;
         border-radius: 10px;
 
@@ -46,5 +45,21 @@ app-answer-form {
     button:hover {
         background-color: $middle-grey;
         color: $light-grey;
+    }
+}
+
+.submit-container {
+    min-width: 150px;
+}
+
+@media (max-width: 600px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            margin: 10px 0 0 0;
+        }
     }
 }

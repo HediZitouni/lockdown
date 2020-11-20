@@ -22,6 +22,7 @@ import { ResultService } from './services/result.service';
 import { ValidateSuggestionComponent } from './validate-suggestion/validate-suggestion.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
     SuggestionComponent,
     ValidateAnswersComponent,
     ResultComponent,
-    ValidateSuggestionComponent
+    ValidateSuggestionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
