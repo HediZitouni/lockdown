@@ -1,8 +1,7 @@
 @import "../variables";
 
-
 .room-container {
-    height: 100vh;
+    height: $app-container-height;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,11 +48,12 @@
     }
 }
 
-form, .select-room {
+form, .create-room {
     width: 600px;
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    height: 35px;
     button {
         height: 35px;
         width: 30%;
@@ -77,4 +77,54 @@ form, .select-room {
 
 .currentUser {
     color: red;
+}
+
+.room-code-container {
+    margin-bottom: 80px;
+    text-align: center;
+    font-size: $size-input-big;
+    color: $middle-grey;
+    .room-code{
+        color:$light-grey;
+    }
+}
+
+.join-room {
+    display: flex;
+    justify-content: center;
+    background-color: $middle-grey;
+    max-width: 600px;
+    height: 35px;
+}
+
+.join-input {
+    width: 85%;
+    height: 100%;
+}
+
+.join-button {
+    height: 100%;
+    width: 15%;
+    button {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mat-icon {
+            color: $light-grey;
+            font-size: $size-login-icon;
+            height: $size-login-icon;
+            width: $size-login-icon;
+            line-height: $size-login-icon;
+        }
+    }
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+label {
+    color: $light-grey;
+    font-size: $size-normal;
 }

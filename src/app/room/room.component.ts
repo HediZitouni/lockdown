@@ -12,6 +12,7 @@ export class RoomComponent implements OnInit {
   users: userModel[];
   currentUser: userModel;
   room: string;
+  joinedRoom: string;
   constructor(
     private userService: UserService,
     private socketService: SocketService
@@ -40,6 +41,6 @@ export class RoomComponent implements OnInit {
   }
 
   onClick(emit): void {
-    this.socketService.callSocket(emit);
+    this.socketService.callSocket(emit, this.joinedRoom);
   }
 }
