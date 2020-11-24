@@ -36,6 +36,7 @@ export class SocketService {
     this.onResults();
     this.onRoom();
     this.onValidationTable();
+    this.onReloadUsers();
   }
 
   private getSocket() {
@@ -85,6 +86,12 @@ export class SocketService {
   private onValidationTable() {
     this.socket.on('validationTable', (validation) => {
       this.userService.modifyValidation(validation);
+    });
+  }
+
+  private onReloadUsers() {
+    this.socket.on('reloadUsers', () => {
+      this.socket.emit('reloadUser', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom()});
     });
   }
 
