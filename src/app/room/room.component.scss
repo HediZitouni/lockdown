@@ -1,8 +1,7 @@
 @import "../variables";
 
-
 .room-container {
-    height: 100vh;
+    height: $app-container-height;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,4 +76,14 @@ form, .select-room {
 
 .currentUser {
     color: red;
+}
+
+.room-code-container {
+    margin-bottom: 80px;
+    text-align: center;
+    font-size: $size-input-big;
+    color: $middle-grey;
+    .room-code{
+        color:$light-grey;
+    }
 }

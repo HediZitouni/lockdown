@@ -11,7 +11,15 @@
         
         <div class="select-room" *ngIf="!room">
             <button type='button' (click)="onClick('emitCreateGame')">Create a game</button>
+        </div>
+
+        <div class="select-room" *ngIf="!room">
+            <input type="text" name="Pseudo" placeholder="Enter a room code" [(ngModel)] = "joinedRoom">
             <button type='button' (click)="onClick('emitNewUser')">Join a game</button>
+        </div>
+        
+        <div class="room-code-container" *ngIf="room">
+            <span>Room code: <span class="room-code">{{room}}</span></span>
         </div>
         
         <form #form="ngForm" (ngSubmit)="onSubmit()">
