@@ -47,20 +47,23 @@ export class UserService {
 
   setUsers(listUsers) {
     this.users = this.getUsers();
+    const newListUsers = [];
     listUsers.forEach(updatedUser => {
       const indexUser = this.users.findIndex(user => user.pseudo === updatedUser.pseudo);
       if (indexUser === -1) {
-        this.users.push({pseudo: updatedUser.pseudo, ready:false, usersChecked:null});
+        newListUsers.push({pseudo: updatedUser.pseudo, ready:false, usersChecked:null});
+      } else {
+        newListUsers.push(this.users[indexUser]);
       }
-      const currentUser = this.users.find(user => user.pseudo === updatedUser.pseudo);
+      const currentUser = newListUsers.find(user => user.pseudo === updatedUser.pseudo);
       currentUser.ready = updatedUser.ready;
       if (!currentUser.usersChecked) {
         currentUser.usersChecked = {};
         listUsers.forEach(newUser => currentUser.usersChecked[newUser.pseudo] = true)
       }
     });
-    sessionStorage.setItem('users', JSON.stringify(this.users));
-    this.$users.next(this.users);
+    sessionStorage.setItem('users', JSON.stringify(newListUsers));
+    this.$users.next(newListUsers);
   }
 
   getRoom(): string {
