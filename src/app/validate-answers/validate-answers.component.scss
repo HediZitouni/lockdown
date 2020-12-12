@@ -51,3 +51,10 @@ form {
         font-size: $size-normal;
     }
 }
+
+@media (max-width: 600px) {
+    .validate-answers, form {
+        width: 90vw;
+        min-width: 250px;
+    }
+}

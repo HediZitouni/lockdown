@@ -43,3 +43,10 @@
 .room-link :hover {
     background-color: $middle-grey-lighter;
 }
+
+@media (max-width: 600px) {
+    .ranking {
+        width: 90vw;
+        min-width: 250px;
+    }
+}
