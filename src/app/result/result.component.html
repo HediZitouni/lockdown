@@ -2,4 +2,13 @@
     <div class="user" *ngFor="let result of results">
             <div class="pseudo">{{result.pseudo}}</div> <div class="result">{{result.points}} Pts</div>
     </div>
+
+    <div class="room-link">
+        <a [routerLink]="['/room']">
+            <div>
+                <span>Room</span>
+            </div>
+        </a>
+    </div>
 </div>
+

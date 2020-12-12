@@ -1,7 +1,7 @@
 @import "../variables";
 
 .connexion-container {
-    height: 100vh;
+    height: $app-container-height;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -27,17 +27,17 @@
     justify-content: center;
     background-color: $middle-grey;
     width: 30%;
+    min-width: 200px;
     height: 50px;
     border-radius: 15px;
     margin: 4px 4px 4px 4px;
 
     .user-info {
-        width: 100%;
+        width: 200px;
         height: 100%;
         line-height: 50px;
         text-align: center;
         color: $light-grey;
-        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -56,7 +56,7 @@ form, .create-room {
     height: 35px;
     button {
         height: 35px;
-        width: 30%;
+        width: 200px;
         border-radius: 10px;
         background-color: $middle-grey;
         color: $light-grey;
@@ -127,4 +127,11 @@ form, .create-room {
 label {
     color: $light-grey;
     font-size: $size-normal;
+}
+
+@media (max-width: 600px) {
+    form, .create-room, .room {
+        width: 90vw;
+        min-width: 250px;
+    }
 }
