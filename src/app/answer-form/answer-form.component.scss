@@ -34,29 +34,21 @@
 }
 
 .radio, .checkbox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     margin-bottom: 100px;
 }
 
 .option {
-    width: 30%;
     background-color: $middle-grey;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
+    min-height: 40px;
     color: $light-grey;
-    max-width: 100%;
-    min-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 3px 0 3px 0;
+    margin-top: 2px;
+    padding: 5px 5px 5px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .option:hover {
-    overflow: visible;
-    text-overflow: initial;
     background-color: $middle-grey-lighter;
 }
 
@@ -66,7 +58,7 @@
 
     button {
         height: 40px;
-        width: 30%;
+        width: 200px;
         border-radius: 10px;
         background-color: $middle-grey;
         color: $light-grey;

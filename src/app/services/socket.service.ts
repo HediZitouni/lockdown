@@ -30,12 +30,13 @@ export class SocketService {
   private createSocket() {
     this.socket = io(`${back}`);
     this.onError();
-    this.onListUsers();
+    this.onRoomData();
     this.onRound();
     this.onAnswers();
     this.onResults();
     this.onRoom();
     this.onValidationTable();
+    this.onReloadUsers();
   }
 
   private getSocket() {
@@ -48,9 +49,10 @@ export class SocketService {
     });
   }
 
-  private onListUsers() {
-    this.socket.on('listUsers', (listUsers) => {
-      this.userService.setUsers(listUsers);
+  private onRoomData() {
+    this.socket.on('roomData', ({users, room}) => {
+      this.userService.setUsers(users);
+      this.userService.setRoom(room);
     });
   }
 
@@ -87,27 +89,33 @@ export class SocketService {
     });
   }
 
-  private emitCreateGame(answer) {
+  private onReloadUsers() {
+    this.socket.on('reloadUsers', () => {
+      this.socket.emit('reloadUser', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom()});
+    });
+  }
+
+  private emitCreateGame() {
     this.socket.emit('createGame', {pseudo: this.userService.getCurrentUser().pseudo});
   }
 
-  private emitNewUser(newUser) {
-    this.socket.emit('newUser', {pseudo:this.userService.getCurrentUser().pseudo});
+  private emitNewUser(room) {
+    this.socket.emit('newUser', {pseudo:this.userService.getCurrentUser().pseudo, room: room});
   }
 
   private emitReady() {
-    this.socket.emit('ready', {pseudo: this.userService.getCurrentUser().pseudo});
+    this.socket.emit('ready', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom()});
   }
 
   private emitAnswered(answer) {
-    this.socket.emit('answered', {pseudo: this.userService.getCurrentUser().pseudo, ...answer});
+    this.socket.emit('answered', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom(), ...answer});
   }
 
   private emitValidateAnswer(userToValidate) {
-    this.socket.emit('validateAnswer', {pseudo: this.userService.getCurrentUser().pseudo, ...userToValidate});
+    this.socket.emit('validateAnswer', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom(), ...userToValidate});
   }
 
   private emitRejectAnswer(userToReject) {
-    this.socket.emit('rejectAnswer', {pseudo: this.userService.getCurrentUser().pseudo, ...userToReject});
+    this.socket.emit('rejectAnswer', {pseudo: this.userService.getCurrentUser().pseudo, room: this.userService.getRoom(), ...userToReject});
   }
 }

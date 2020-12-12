@@ -2,25 +2,25 @@
     <div (click)="clearSessionStorage()">
         <span>Clear session storage</span>
     </div>
-    <a href="/">
+    <a [routerLink]="['/']">
         <div>
             <span>Connexion</span>
         </div>
     </a>
 
-    <a href="/suggestion">
+    <a [routerLink]="['/suggestion']">
         <div>
             <span>Suggestion</span>
         </div>
     </a>
 
-    <a href="/validation">
+    <a [routerLink]="['/validation']">
         <div>
             <span>Validation</span>
         </div>
     </a>
 
-    <a href="/room">
+    <a [routerLink]="['/room']">
         <div>
             <span>Room</span>
         </div>

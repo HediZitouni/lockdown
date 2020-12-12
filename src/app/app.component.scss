@@ -1,6 +1,7 @@
 @import "variables";
 .nav-container {
-    min-height: 50px;
+    min-height: $header-height;
+    min-width: 250px;
 }
 .app-container {
     display: flex;

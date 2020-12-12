@@ -1,8 +1,7 @@
 @import "../variables";
 
 .validate-answers-container {
-    height: 90vh;
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 .validate-answers {
@@ -18,14 +17,10 @@ form {
 }
 
 .answers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     max-width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     .userAnswer {
-        max-width: 40%;
         margin: 0 3px 0 3px;
 
         .pseudo {
@@ -37,14 +32,10 @@ form {
             color: $light-grey;
             font-size: $size-normal;
             background-color: $middle-grey;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
             overflow: hidden;
             text-overflow: ellipsis;
             border-radius: 10px;
-            width: 180px;
-            max-width: 100%;
+            padding: 5px 5px 5px 20px;
         }
     }
 }
@@ -58,5 +49,12 @@ form {
         background-color: $middle-grey;
         color: $light-grey;
         font-size: $size-normal;
+    }
+}
+
+@media (max-width: 600px) {
+    .validate-answers, form {
+        width: 90vw;
+        min-width: 250px;
     }
 }

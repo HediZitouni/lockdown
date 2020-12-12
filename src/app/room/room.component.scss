@@ -1,8 +1,7 @@
 @import "../variables";
 
-
 .room-container {
-    height: 100vh;
+    height: $app-container-height;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,17 +27,17 @@
     justify-content: center;
     background-color: $middle-grey;
     width: 30%;
+    min-width: 200px;
     height: 50px;
     border-radius: 15px;
     margin: 4px 4px 4px 4px;
 
     .user-info {
-        width: 100%;
+        width: 200px;
         height: 100%;
         line-height: 50px;
         text-align: center;
         color: $light-grey;
-        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -49,14 +48,15 @@
     }
 }
 
-form, .select-room {
+form, .create-room {
     width: 600px;
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    height: 35px;
     button {
         height: 35px;
-        width: 30%;
+        width: 200px;
         border-radius: 10px;
         background-color: $middle-grey;
         color: $light-grey;
@@ -77,4 +77,61 @@ form, .select-room {
 
 .currentUser {
     color: red;
+}
+
+.room-code-container {
+    margin-bottom: 80px;
+    text-align: center;
+    font-size: $size-input-big;
+    color: $middle-grey;
+    .room-code{
+        color:$light-grey;
+    }
+}
+
+.join-room {
+    display: flex;
+    justify-content: center;
+    background-color: $middle-grey;
+    max-width: 600px;
+    height: 35px;
+}
+
+.join-input {
+    width: 85%;
+    height: 100%;
+}
+
+.join-button {
+    height: 100%;
+    width: 15%;
+    button {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mat-icon {
+            color: $light-grey;
+            font-size: $size-login-icon;
+            height: $size-login-icon;
+            width: $size-login-icon;
+            line-height: $size-login-icon;
+        }
+    }
+    button:hover {
+        background-color: $middle-grey-lighter;
+    }
+}
+
+label {
+    color: $light-grey;
+    font-size: $size-normal;
+}
+
+@media (max-width: 600px) {
+    form, .create-room, .room {
+        width: 90vw;
+        min-width: 250px;
+    }
 }

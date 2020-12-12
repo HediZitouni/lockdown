@@ -11,14 +11,18 @@
     <div class='radio' *ngIf = "answerForm.type === 'radio'">
         <div (click)="triggerOption(option)" [ngClass]="{'checked': answerForm.content === option}" class="option" *ngFor = "let option of answerForm.options">
             <input style="pointer-events: none" type="radio" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}" [(ngModel)] = "answerForm.content">
-            <label style="pointer-events: none">{{option}}</label>
+            <div style="pointer-events: none">
+                <label style="pointer-events: none">{{option}}</label>
+            </div>
         </div>
     </div>
 
     <div class='checkbox' *ngIf = "answerForm.type === 'checkbox'">
         <div (click)="onChange($event)" [ngClass]="{'checked': (answerForm.content || []).includes(option)}" class="option" *ngFor = "let option of answerForm.options">
             <input style="pointer-events: none" type="checkbox" name="{{answerForm.type}}{{answerForm.id}}" value="{{option}}">
-            <label style="pointer-events: none">{{option}}</label>
+            <div style="pointer-events: none">
+                <label style="pointer-events: none">{{option}}</label>
+            </div>
         </div>
     </div>
 
