@@ -29,7 +29,8 @@ export class SuggestionComponent implements OnInit {
     this.answer = {
       type:'plaintext',
       options:[],
-      answers:[]
+      answers:[],
+      explanation: ''
     }
   }
 
@@ -57,6 +58,7 @@ export class SuggestionComponent implements OnInit {
   onChangeAnswerType() {
     this.answer.options = [];
     this.answer.answers = [];
+    this.answer.explanation = '';
   }
 
   onChangeQuestionType() {
@@ -117,7 +119,8 @@ export class SuggestionComponent implements OnInit {
     this.answer = {
       type:'plaintext',
       options:[],
-      answers:[]
+      answers:[],
+      explanation: ''
     }
   }
 
