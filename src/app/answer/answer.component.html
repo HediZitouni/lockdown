@@ -5,11 +5,13 @@
     </div>
 
     <span>Explanation</span>
-    <div class="explanation" *ngIf='answers.explanation'>
+    <div class="explanation" *ngIf='answers.explanation; else noExplanation'>
         <span>{{answers.explanation}}</span>
     </div>
 
-    <div class="explanation" *ngIf='!answers.explanation'>
-        <span>Il n'y a pas d'explication pour cette réponse</span>
-    </div>
+    <ng-template #noExplanation>
+        <div class="explanation">
+            <span>Il n'y a pas d'explication pour cette réponse</span>
+        </div>
+    </ng-template>
 </div>
