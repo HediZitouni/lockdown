@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { threadId } from 'worker_threads';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -17,6 +20,7 @@ export class NavbarComponent implements OnInit {
 
   clearSessionStorage() {
     sessionStorage.clear();
+    this.userService.setRoom('');
     this.router.navigate(['/']);
   }
 }
