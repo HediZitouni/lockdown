@@ -23,9 +23,18 @@ form {
     .userAnswer {
         margin: 0 3px 0 3px;
 
-        .pseudo {
-            color: $light-grey;
-            font-size: $size-normal;
+        .pseudo-time {
+            display: flex;
+            margin-bottom: 2px;
+
+            .pseudo, .time {
+                color: $light-grey;
+                font-size: $size-normal;
+            }
+
+            .time {
+                margin-left: 20px;
+            }
         }
 
         .answer {
