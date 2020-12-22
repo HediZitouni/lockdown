@@ -5,6 +5,7 @@ import { userModel } from '../datamodel/userModel';
 import { MancheService } from '../services/manche.service';
 import { SocketService } from '../services/socket.service';
 import { UserService } from '../services/user.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-validate-answers',
@@ -23,7 +24,8 @@ export class ValidateAnswersComponent implements OnInit {
   constructor(
     private mancheService: MancheService,
     private socketService: SocketService,
-    private userService: UserService
+    private userService: UserService,
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ValidateAnswersComponent implements OnInit {
     });
 
     this.answers = this.manche.answer;
-    this.userAnswers = this.manche.userAnswers;
+    this.userAnswers = this.utilsService.sortBy(this.manche.userAnswers, 'time');
     this.answersValidation = this.userAnswers.map(ua => ua.pseudo);
   }
 

@@ -1,5 +1,17 @@
 <div class="answer-container">
-    <div *ngFor="let answer of answers">
+    <span>Answers</span>
+    <div class="answer" *ngFor="let answer of answers.answers">
         <span>{{answer}}</span>
     </div>
+
+    <span>Explanation</span>
+    <div class="explanation" *ngIf='answers.explanation; else noExplanation'>
+        <span>{{answers.explanation}}</span>
+    </div>
+
+    <ng-template #noExplanation>
+        <div class="explanation">
+            <span>Il n'y a pas d'explication pour cette réponse</span>
+        </div>
+    </ng-template>
 </div>

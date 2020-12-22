@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { threadId } from 'worker_threads';
 import { userModel } from '../datamodel/userModel';
 import { UserService } from '../services/user.service';
 
