@@ -9,7 +9,7 @@
                 <div class="userAnswer" *ngFor="let userAnswer of userAnswers">
                     <div class="pseudo-time">
                         <div class="pseudo">{{userAnswer.pseudo}}</div>
-                        <div class="time">{{userAnswer.time}}ms</div>
+                        <div class="time">{{userAnswer.time | msToS}}s</div>
                     </div>
                     <div class="answer">{{userAnswer.answer}}</div>
                     <div class="validations">

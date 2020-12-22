@@ -23,6 +23,7 @@ import { ValidateSuggestionComponent } from './validate-suggestion/validate-sugg
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MsToSPipe } from './pipes/ms-to-s.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ValidateAnswersComponent,
     ResultComponent,
     ValidateSuggestionComponent,
-    NavbarComponent
+    NavbarComponent,
+    MsToSPipe
   ],
   imports: [
     BrowserModule,
