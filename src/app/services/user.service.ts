@@ -10,12 +10,18 @@ export class UserService {
   $users: BehaviorSubject<userModel[]>;
   room: string;
   $room: BehaviorSubject<string>;
+  currentUser: userModel;
+  $currentUser: BehaviorSubject<userModel>;
   constructor() {
     this.users = this.getUsers();
     this.$users = new BehaviorSubject(this.users);
 
+    this.currentUser = this.getCurrentUser();
+    this.$currentUser = new BehaviorSubject(this.currentUser);
+
     this.room = this.getRoom();
     this.$room = new BehaviorSubject(this.room);
+
    }
 
   setUser(newUser) {
@@ -33,6 +39,7 @@ export class UserService {
     this.users.forEach(user => newUser.usersChecked[user.pseudo] = true)
     this.users.push(newUser);
     sessionStorage.setItem('currentUser', JSON.stringify(newUser));
+    this.$currentUser.next(this.getCurrentUser());
     sessionStorage.setItem('users', JSON.stringify(this.users)); // Only on the host session
     this.$users.next(this.users);
   }

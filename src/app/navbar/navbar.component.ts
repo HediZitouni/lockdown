@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { userModel } from '../datamodel/userModel';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,12 +10,20 @@ import { UserService } from '../services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  currentUser: userModel;
+
   constructor(
     private router: Router,
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+    this.currentUser = this.userService.getCurrentUser();
+    this.userService.$currentUser.subscribe(currentUser => this.currentUser = currentUser);
   }
 
   clearSessionStorage() {
