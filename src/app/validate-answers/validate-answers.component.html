@@ -7,7 +7,10 @@
         <form #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="answers">
                 <div class="userAnswer" *ngFor="let userAnswer of userAnswers">
-                    <div class="pseudo">{{userAnswer.pseudo}}</div>
+                    <div class="pseudo-time">
+                        <div class="pseudo">{{userAnswer.pseudo}}</div>
+                        <div class="time">{{userAnswer.time | msToS}}s</div>
+                    </div>
                     <div class="answer">{{userAnswer.answer}}</div>
                     <div class="validations">
                         <input type="checkbox" name="validation-userAnswer.pseudo" value="{{userAnswer.pseudo}}" (change)="onChange($event)" checked>

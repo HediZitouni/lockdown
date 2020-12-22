@@ -2,7 +2,7 @@
     <div (click)="clearSessionStorage()">
         <span>Clear session storage</span>
     </div>
-    <a [routerLink]="['/']">
+    <a *ngIf='!currentUser' [routerLink]="['/']">
         <div>
             <span>Connexion</span>
         </div>

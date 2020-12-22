@@ -20,6 +20,16 @@ form {
         display: none;
     }
 
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: $size-input-big;
+        height: 117px;
+        background-color: $middle-grey;
+        color: $light-grey;
+    }
+
     .question-types, .answer-types {
         display: flex;
         justify-content: space-around;
@@ -157,6 +167,12 @@ mat-icon {
 }
 
 @media (max-width: 600px) {
+
+    .suggestion-content {
+        width: 90vw;
+        min-width: 250px;
+    }
+
     .question-types, .answer-types {
         display: flex;
         flex-wrap: wrap;
