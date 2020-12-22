@@ -53,6 +53,12 @@
                 <button type="button"><mat-icon>add</mat-icon></button>
             </div>
         </div>
+
+        <div class="explanation">
+            <div class="explanation-input">
+                <textarea name="explanation" placeholder="Enter the explanation of the answer" [(ngModel)] = "answer.explanation"></textarea>
+            </div>
+        </div>
     
         <div class="submit-container">
             <button (submit)="onSubmit()">Submit</button>

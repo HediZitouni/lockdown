@@ -8,19 +8,19 @@ import { mancheModel } from '../datamodel/mancheModel';
 })
 export class AnswerComponent implements OnInit {
   @Input() manche: mancheModel;
-  answers: string[];
+  answers: any = {};
   constructor() { }
 
   ngOnInit(): void {
     switch (this.manche.answerForm.type) {
       case 'plaintext':
-        this.answers = this.manche.answer.answers.answers;
+        this.answers = {answers: [this.manche.answer.answers.answers], explanation: this.manche.answer.answers.explanation};
         break;
       case 'radio':
-        this.answers = [this.manche.answerForm.options[this.manche.answer.answers.answers]];
+        this.answers = {answers: [this.manche.answerForm.options[this.manche.answer.answers.answers]], explanation: this.manche.answer.answers.explanation};
         break;
       case 'checkbox':
-        this.answers = this.manche.answer.answers.answers.map(answer => this.manche.answerForm.options[answer]);
+        this.answers = {answers: this.manche.answer.answers.answers.map(answer => this.manche.answerForm.options[answer]), explanation: this.manche.answer.answers.explanation};
         break;
     }
   }
